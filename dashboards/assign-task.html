@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>SmartHR | Assign Task</title>
+
+    <link
+        rel="stylesheet"
+        href="assign-task.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="page-header">
+
+        <div>
+
+            <div class="title-row">
+
+                <div class="title-icon">
+                    <i class="fa-solid fa-list-check"></i>
+                </div>
+
+                <div>
+
+                    <h1>Assign Task</h1>
+
+                    <p>
+                        Assign and manage employee tasks.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="back-btn"
+            onclick="goBack()">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Back to Dashboard
+
+        </button>
+
+    </header>
+
+
+    <!-- ================= MESSAGE ================= -->
+
+    <div
+        id="message"
+        class="message">
+    </div>
+
+
+    <!-- ================= MAIN GRID ================= -->
+
+    <div class="main-grid">
+
+
+        <!-- ================= ASSIGN FORM ================= -->
+
+        <section class="card">
+
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+                        <i class="fa-solid fa-user-plus"></i>
+                        Assign New Task
+                    </h2>
+
+                    <p>
+                        Select an employee and provide
+                        task details.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <form id="taskForm">
+
+
+                <!-- EMPLOYEE -->
+
+                <div class="form-group">
+
+                    <label for="employee">
+
+                        Employee
+
+                        <span>*</span>
+
+                    </label>
+
+
+                    <select
+                        id="employee"
+                        name="employee_id"
+                        required>
+
+                        <option value="">
+                            Loading employees...
+                        </option>
+
+                    </select>
+
+
+                    <small id="employeeInfo">
+                        Select an employee to view details.
+                    </small>
+
+                </div>
+
+
+                <!-- TITLE -->
+
+                <div class="form-group">
+
+                    <label for="title">
+
+                        Task Title
+
+                        <span>*</span>
+
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        placeholder="e.g. Prepare monthly report"
+                        maxlength="200"
+                        required>
+
+                </div>
+
+
+                <!-- DESCRIPTION -->
+
+                <div class="form-group">
+
+                    <label for="description">
+
+                        Description
+
+                    </label>
+
+
+                    <textarea
+                        id="description"
+                        name="description"
+                        rows="5"
+                        placeholder="Enter task instructions or details..."></textarea>
+
+                </div>
+
+
+                <!-- PRIORITY + DATE -->
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label for="priority">
+
+                            Priority
+
+                            <span>*</span>
+
+                        </label>
+
+
+                        <select
+                            id="priority"
+                            name="priority"
+                            required>
+
+                            <option value="low">
+                                Low
+                            </option>
+
+                            <option
+                                value="medium"
+                                selected>
+
+                                Medium
+
+                            </option>
+
+                            <option value="high">
+                                High
+                            </option>
+
+                            <option value="urgent">
+                                Urgent
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="dueDate">
+
+                            Due Date
+
+                        </label>
+
+
+                        <input
+                            type="date"
+                            id="dueDate"
+                            name="due_date">
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- SUBMIT -->
+
+                <button
+                    type="submit"
+                    id="assignBtn"
+                    class="assign-btn">
+
+                    <i class="fa-solid fa-paper-plane"></i>
+
+                    Assign Task
+
+                </button>
+
+
+            </form>
+
+
+        </section>
+
+
+        <!-- ================= EMPLOYEE PREVIEW ================= -->
+
+        <section class="card employee-preview-card">
+
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+                        <i class="fa-solid fa-user"></i>
+                        Employee
+                    </h2>
+
+                    <p>
+                        Selected employee details.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="employeePreview"
+                class="employee-preview empty">
+
+                <div class="preview-icon">
+
+                    <i class="fa-solid fa-user"></i>
+
+                </div>
+
+                <h3>
+                    No Employee Selected
+                </h3>
+
+                <p>
+                    Select an employee from the form
+                    to see their details here.
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+    </div>
+
+
+    <!-- ================= TASKS ================= -->
+
+    <section class="card tasks-card">
+
+
+        <div class="card-header task-header">
+
+            <div>
+
+                <h2>
+
+                    <i class="fa-solid fa-clipboard-list"></i>
+
+                    Assigned Tasks
+
+                </h2>
+
+                <p>
+                    Tasks assigned by HR or manager.
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="refreshBtn"
+                class="refresh-btn">
+
+                <i class="fa-solid fa-rotate"></i>
+
+                Refresh
+
+            </button>
+
+        </div>
+
+
+        <!-- STATS -->
+
+        <div class="task-stats">
+
+
+            <div class="task-stat total">
+
+                <span>Total</span>
+
+                <strong id="totalCount">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="task-stat pending">
+
+                <span>Pending</span>
+
+                <strong id="pendingCount">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="task-stat progress">
+
+                <span>In Progress</span>
+
+                <strong id="progressCount">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="task-stat completed">
+
+                <span>Completed</span>
+
+                <strong id="completedCount">
+                    0
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- TASK LIST -->
+
+        <div
+            id="taskList"
+            class="task-list">
+
+            <div class="loading">
+
+                <i class="fa-solid fa-spinner fa-spin"></i>
+
+                Loading tasks...
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+</div>
+
+
+<script src="assign-task.js"></script>
+
+</body>
+
+</html>

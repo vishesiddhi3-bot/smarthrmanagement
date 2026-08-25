@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SmartHR | Apply Leave</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #172033;
+        }
+
+        .page {
+            min-height: 100vh;
+        }
+
+        /* ================= TOPBAR ================= */
+
+        .topbar {
+            height: 75px;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 35px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+
+            background: #2563eb;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .brand strong {
+            font-size: 20px;
+        }
+
+        .brand small {
+            display: block;
+            color: #64748b;
+            margin-top: 2px;
+        }
+
+        .back-btn {
+            border: none;
+            background: #eef2ff;
+            color: #2563eb;
+
+            padding: 10px 16px;
+            border-radius: 9px;
+
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .back-btn:hover {
+            background: #e0e7ff;
+        }
+
+        /* ================= CONTENT ================= */
+
+        .content {
+            padding: 30px 35px;
+            max-width: 1250px;
+            margin: auto;
+        }
+
+        .heading {
+            margin-bottom: 25px;
+        }
+
+        .heading h1 {
+            font-size: 28px;
+        }
+
+        .heading p {
+            color: #64748b;
+            margin-top: 6px;
+        }
+
+        /* ================= GRID ================= */
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.4fr;
+            gap: 22px;
+            align-items: start;
+        }
+
+        /* ================= CARD ================= */
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+
+            box-shadow: 0 4px 18px rgba(0, 0, 0, .05);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 22px;
+        }
+
+        .card-header h2 {
+            font-size: 20px;
+        }
+
+        .card-header p {
+            color: #64748b;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+
+        .card-header i {
+            font-size: 25px;
+            color: #2563eb;
+        }
+
+        /* ================= FORM ================= */
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            color: #475569;
+
+            margin-bottom: 7px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+
+            width: 100%;
+
+            padding: 12px 13px;
+
+            border: 1px solid #dbe1e8;
+
+            border-radius: 9px;
+
+            background: white;
+
+            outline: none;
+
+            font-size: 14px;
+
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+
+            border-color: #2563eb;
+
+            box-shadow:
+                0 0 0 3px rgba(37, 99, 235, .1);
+        }
+
+        .date-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        /* ================= BUTTON ================= */
+
+        .submit-btn {
+            width: 100%;
+
+            border: none;
+
+            background: #2563eb;
+            color: white;
+
+            padding: 13px 18px;
+
+            border-radius: 9px;
+
+            cursor: pointer;
+
+            font-size: 15px;
+            font-weight: 700;
+
+            margin-top: 5px;
+        }
+
+        .submit-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .submit-btn:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+        }
+
+        /* ================= MESSAGE ================= */
+
+        .message {
+            display: none;
+
+            padding: 12px 15px;
+
+            border-radius: 9px;
+
+            margin-bottom: 18px;
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+        .message.show {
+            display: block;
+        }
+
+        .message.success {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .message.error {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .message.info {
+            background: #eff6ff;
+            color: #1d4ed8;
+        }
+
+        /* ================= TABLE ================= */
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+
+            min-width: 650px;
+        }
+
+        th,
+        td {
+            padding: 13px;
+
+            text-align: left;
+
+            border-bottom: 1px solid #edf0f4;
+        }
+
+        th {
+            background: #f8fafc;
+
+            color: #475569;
+
+            font-size: 12px;
+        }
+
+        td {
+            font-size: 13px;
+        }
+
+        tbody tr:hover {
+            background: #fafcff;
+        }
+
+        /* ================= STATUS ================= */
+
+        .status {
+            display: inline-block;
+
+            padding: 5px 10px;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            text-transform: capitalize;
+        }
+
+        .status.pending {
+            background: #fef3c7;
+            color: #b45309;
+        }
+
+        .status.approved {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .status.rejected {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .status.unknown {
+            background: #f1f5f9;
+            color: #475569;
+        }
+
+        .empty {
+            text-align: center;
+            color: #64748b;
+
+            padding: 40px !important;
+        }
+
+        .empty i {
+            display: block;
+
+            font-size: 32px;
+
+            color: #94a3b8;
+
+            margin-bottom: 10px;
+        }
+
+        /* ================= LEAVE DAYS ================= */
+
+        .days-info {
+            background: #eff6ff;
+
+            border: 1px solid #dbeafe;
+
+            color: #1d4ed8;
+
+            padding: 11px 13px;
+
+            border-radius: 9px;
+
+            margin-bottom: 18px;
+
+            font-size: 13px;
+
+            font-weight: 600;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 900px) {
+
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media (max-width: 700px) {
+
+            .topbar {
+                padding: 0 20px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .brand small {
+                display: none;
+            }
+
+            .date-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="page">
+
+
+    <!-- ================= TOPBAR ================= -->
+
+    <header class="topbar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+
+                <i class="fa-solid fa-users"></i>
+
+            </div>
+
+            <div>
+
+                <strong>
+                    SmartHR
+                </strong>
+
+                <small>
+                    Employee Portal
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="back-btn"
+            id="backBtn"
+        >
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Dashboard
+
+        </button>
+
+    </header>
+
+
+
+    <!-- ================= CONTENT ================= -->
+
+    <main class="content">
+
+
+        <div class="heading">
+
+            <h1>
+                Apply Leave
+            </h1>
+
+            <p>
+                Submit your leave request and track its status.
+            </p>
+
+        </div>
+
+
+
+        <div class="main-grid">
+
+
+            <!-- ================= APPLY LEAVE ================= -->
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h2>
+                            New Leave Request
+                        </h2>
+
+                        <p>
+                            Fill in the details below.
+                        </p>
+
+                    </div>
+
+                    <i class="fa-solid fa-calendar-plus"></i>
+
+                </div>
+
+
+                <!-- MESSAGE -->
+
+                <div
+                    id="message"
+                    class="message"
+                ></div>
+
+
+                <form id="leaveForm">
+
+
+                    <!-- LEAVE TYPE -->
+
+                    <div class="form-group">
+
+                        <label for="leaveType">
+
+                            Leave Type
+
+                        </label>
+
+                        <select
+                            id="leaveType"
+                            required
+                        >
+
+                            <option value="">
+
+                                Loading leave types...
+
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- DATES -->
+
+                    <div class="date-grid">
+
+
+                        <div class="form-group">
+
+                            <label for="startDate">
+
+                                Start Date
+
+                            </label>
+
+                            <input
+                                type="date"
+                                id="startDate"
+                                required
+                            >
+
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <label for="endDate">
+
+                                End Date
+
+                            </label>
+
+                            <input
+                                type="date"
+                                id="endDate"
+                                required
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- DAYS -->
+
+                    <div
+                        id="daysInfo"
+                        class="days-info"
+                        style="display:none;"
+                    >
+
+                        Leave Duration:
+                        <span id="leaveDays">
+                            0
+                        </span>
+                        day(s)
+
+                    </div>
+
+
+
+                    <!-- REASON -->
+
+                    <div class="form-group">
+
+                        <label for="reason">
+
+                            Reason
+
+                        </label>
+
+                        <textarea
+                            id="reason"
+                            placeholder="Enter reason for leave..."
+                        ></textarea>
+
+                    </div>
+
+
+
+                    <!-- SUBMIT -->
+
+                    <button
+                        type="submit"
+                        class="submit-btn"
+                        id="submitBtn"
+                    >
+
+                        <i class="fa-solid fa-paper-plane"></i>
+
+                        Apply Leave
+
+                    </button>
+
+
+                </form>
+
+            </div>
+
+
+
+            <!-- ================= MY REQUESTS ================= -->
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h2>
+                            My Leave Requests
+                        </h2>
+
+                        <p>
+                            Track your submitted leave requests.
+                        </p>
+
+                    </div>
+
+                    <i class="fa-solid fa-list-check"></i>
+
+                </div>
+
+
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Leave Type
+                                </th>
+
+                                <th>
+                                    Start
+                                </th>
+
+                                <th>
+                                    End
+                                </th>
+
+                                <th>
+                                    Days
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody
+                            id="leaveTableBody"
+                        >
+
+                            <tr>
+
+                                <td
+                                    colspan="5"
+                                    class="empty"
+                                >
+
+                                    <i
+                                        class="fa-solid fa-spinner fa-spin"
+                                    ></i>
+
+                                    Loading requests...
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </main>
+
+
+</div>
+
+
+<script src="employee-leave.js?v=3"></script>
+
+</body>
+
+</html>

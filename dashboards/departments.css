@@ -1,0 +1,795 @@
+/* =========================================================
+   SmartHR - DEPARTMENTS PAGE
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f7fb;
+    color: #1f2937;
+    line-height: 1.5;
+}
+
+button,
+input,
+select {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.page {
+    width: 100%;
+    min-height: 100vh;
+    padding: 30px;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 28px;
+}
+
+.title-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.back-btn {
+    width: 42px;
+    height: 42px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #374151;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s ease;
+}
+
+.back-btn:hover {
+    background: #f3f4f6;
+    transform: translateX(-2px);
+}
+
+.page-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 3px;
+}
+
+.page-header p {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   ADD BUTTON
+   ========================================================= */
+
+.add-btn {
+    border: none;
+    background: #4f46e5;
+    color: #ffffff;
+    padding: 11px 18px;
+    border-radius: 9px;
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.18);
+    transition: 0.2s ease;
+}
+
+.add-btn:hover {
+    background: #4338ca;
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   STATISTICS
+   ========================================================= */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-height: 105px;
+    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.04);
+}
+
+.stat-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.stat-icon.purple {
+    background: #ede9fe;
+    color: #7c3aed;
+}
+
+.stat-icon.blue {
+    background: #dbeafe;
+    color: #2563eb;
+}
+
+.stat-icon.green {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+.stat-card span {
+    display: block;
+    color: #6b7280;
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.stat-card strong {
+    display: block;
+    color: #111827;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   ADD DEPARTMENT FORM
+   ========================================================= */
+
+.form-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 25px;
+    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.04);
+}
+
+.card-header {
+    margin-bottom: 22px;
+}
+
+.card-header h2 {
+    font-size: 19px;
+    color: #111827;
+    margin-bottom: 4px;
+}
+
+.card-header p {
+    color: #6b7280;
+    font-size: 13px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 7px;
+}
+
+.form-group input {
+    width: 100%;
+    height: 43px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    padding: 0 12px;
+    font-size: 14px;
+    color: #111827;
+    outline: none;
+    transition: 0.2s ease;
+    background: #ffffff;
+}
+
+.form-group input:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.form-group input::placeholder {
+    color: #9ca3af;
+}
+
+.form-message {
+    min-height: 22px;
+    margin-top: 15px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.cancel-btn,
+.save-btn {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.cancel-btn {
+    background: #f3f4f6;
+    color: #374151;
+}
+
+.cancel-btn:hover {
+    background: #e5e7eb;
+}
+
+.save-btn {
+    background: #4f46e5;
+    color: #ffffff;
+}
+
+.save-btn:hover {
+    background: #4338ca;
+}
+
+
+/* =========================================================
+   DEPARTMENT SECTION
+   ========================================================= */
+
+.departments-section {
+    background: transparent;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 18px;
+}
+
+.section-header h2 {
+    font-size: 20px;
+    color: #111827;
+    margin-bottom: 3px;
+}
+
+.section-header p {
+    color: #6b7280;
+    font-size: 13px;
+}
+
+.refresh-btn {
+    border: 1px solid #d1d5db;
+    background: #ffffff;
+    color: #374151;
+    border-radius: 8px;
+    padding: 9px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.refresh-btn:hover {
+    background: #f9fafb;
+}
+
+
+/* =========================================================
+   DEPARTMENT GRID
+   ========================================================= */
+
+.department-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+
+/* =========================================================
+   DEPARTMENT CARD
+   ========================================================= */
+
+.department-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 3px 14px rgba(15, 23, 42, 0.05);
+    transition: 0.2s ease;
+}
+
+.department-card:hover {
+    box-shadow: 0 7px 22px rgba(15, 23, 42, 0.08);
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   DEPARTMENT TOP
+   ========================================================= */
+
+.department-top {
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+    border-bottom: 1px solid #f0f1f3;
+}
+
+.department-title {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    min-width: 0;
+}
+
+.department-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: #eef2ff;
+    color: #4f46e5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 18px;
+}
+
+.department-title h3 {
+    color: #111827;
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 3px;
+}
+
+.department-title p {
+    color: #6b7280;
+    font-size: 12px;
+    max-width: 300px;
+    word-break: break-word;
+}
+
+.employee-count {
+    white-space: nowrap;
+    background: #f3f4f6;
+    color: #4b5563;
+    border-radius: 20px;
+    padding: 6px 10px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   MANAGER BOX
+   ========================================================= */
+
+.manager-box {
+    margin: 16px 20px 0;
+    padding: 15px;
+    background: #f8fafc;
+    border: 1px solid #eef0f3;
+    border-radius: 11px;
+}
+
+.manager-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: #9ca3af;
+    font-weight: 700;
+    margin-bottom: 11px;
+}
+
+.manager-info {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.manager-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #e0e7ff;
+    color: #4338ca;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.manager-details {
+    min-width: 0;
+}
+
+.manager-name {
+    color: #1f2937;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.manager-role {
+    color: #6b7280;
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   MANAGER ACTIONS
+   ========================================================= */
+
+.manager-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 13px;
+}
+
+.assign-manager-btn,
+.remove-manager-btn {
+    border: none;
+    border-radius: 7px;
+    padding: 8px 11px;
+    font-size: 11px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.2s ease;
+}
+
+.assign-manager-btn {
+    background: #eef2ff;
+    color: #4f46e5;
+}
+
+.assign-manager-btn:hover {
+    background: #e0e7ff;
+}
+
+.remove-manager-btn {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.remove-manager-btn:hover {
+    background: #fecaca;
+}
+
+
+/* =========================================================
+   MANAGER SELECTOR
+   ========================================================= */
+
+.manager-selector {
+    margin-top: 13px;
+    padding: 13px;
+    border-radius: 9px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+}
+
+.manager-selector select {
+    width: 100%;
+    height: 39px;
+    border: 1px solid #d1d5db;
+    border-radius: 7px;
+    padding: 0 10px;
+    color: #374151;
+    background: #ffffff;
+    font-size: 12px;
+    outline: none;
+}
+
+.manager-selector select:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.08);
+}
+
+.selector-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.save-manager-btn,
+.cancel-manager-btn {
+    border: none;
+    border-radius: 7px;
+    padding: 8px 12px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.save-manager-btn {
+    background: #16a34a;
+    color: #ffffff;
+}
+
+.save-manager-btn:hover {
+    background: #15803d;
+}
+
+.cancel-manager-btn {
+    background: #f3f4f6;
+    color: #374151;
+}
+
+.cancel-manager-btn:hover {
+    background: #e5e7eb;
+}
+
+
+/* =========================================================
+   EMPLOYEE SECTION
+   ========================================================= */
+
+.employee-section {
+    padding: 18px 20px 20px;
+}
+
+.employee-section h4 {
+    color: #374151;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+
+/* =========================================================
+   EMPLOYEE LIST
+   ========================================================= */
+
+.employee-list {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.employee-row {
+    min-height: 54px;
+    padding: 8px 10px;
+    border: 1px solid #f0f1f3;
+    border-radius: 9px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.employee-row:hover {
+    background: #f9fafb;
+}
+
+.employee-person {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 0;
+}
+
+.employee-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #dbeafe;
+    color: #2563eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.employee-name {
+    color: #1f2937;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 1px;
+}
+
+.employee-code {
+    color: #9ca3af;
+    font-size: 10px;
+}
+
+.employee-position {
+    color: #6b7280;
+    font-size: 10px;
+    text-align: right;
+    max-width: 130px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.empty-employees {
+    padding: 13px;
+    border: 1px dashed #d1d5db;
+    border-radius: 8px;
+    color: #9ca3af;
+    font-size: 11px;
+    text-align: center;
+}
+
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.loading {
+    grid-column: 1 / -1;
+    min-height: 220px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #6b7280;
+    font-size: 13px;
+    text-align: center;
+    padding: 30px;
+}
+
+.loading i {
+    font-size: 25px;
+    margin-bottom: 4px;
+    color: #6366f1;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .department-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 800px) {
+
+    .page {
+        padding: 20px;
+    }
+
+    .page-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .add-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .page {
+        padding: 14px;
+    }
+
+    .page-header h1 {
+        font-size: 23px;
+    }
+
+    .department-top {
+        flex-direction: column;
+    }
+
+    .employee-count {
+        align-self: flex-start;
+    }
+
+    .section-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .refresh-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .employee-row {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .employee-position {
+        text-align: left;
+        max-width: 100%;
+    }
+
+    .manager-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .assign-manager-btn,
+    .remove-manager-btn {
+        justify-content: center;
+    }
+
+}

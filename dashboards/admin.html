@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>SmartHR | Admin Dashboard</title>
+
+    <link rel="stylesheet" href="../dashboard.css">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-users"></i>
+            </div>
+
+            <div>
+
+                <div class="logo-text">
+                    Smart<span>HR</span>
+                </div>
+
+                <small class="logo-subtitle">
+                    INTELLIGENT HR MANAGEMENT
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="sidebar-menu">
+
+            <div class="menu-title">
+                ADMIN MENU
+            </div>
+
+
+            <a href="admin.html" class="active">
+
+                <i class="fa-solid fa-chart-pie"></i>
+
+                Dashboard
+
+            </a>
+
+
+            <a href="users.html">
+
+                <i class="fa-solid fa-users"></i>
+
+                User Management
+
+            </a>
+
+
+            <a href="#"
+           onclick="openEmployeesPage()";>
+
+                <i class="fa-solid fa-id-card"></i>
+
+                
+                Employees
+
+            </a>
+
+
+            <a href="departments.html">
+    <i class="fa-solid fa-building"></i>
+    Departments
+</a>
+
+           <a href="roles-permissions.html">
+
+                <i class="fa-solid fa-user-shield"></i>
+
+                Roles & Permissions
+
+            </a>
+
+
+            <div class="sidebar-divider"></div>
+
+
+            <div class="menu-title">
+                SYSTEM
+            </div>
+
+
+            <a href="reports.html">
+    <i class="fa-solid fa-chart-column"></i>
+    System Reports
+</a>
+
+           
+
+
+           <a href="database.html">
+    <i class="fa-solid fa-database"></i>
+    Database
+</a>
+
+
+            <a href="setting.html">
+    <i class="fa-solid fa-gear"></i>
+    Settings
+</a>
+
+
+            <div class="sidebar-divider"></div>
+
+
+            <a href="../index.html">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Logout
+
+            </a>
+
+        </div>
+
+
+        <!-- ADMIN -->
+
+        <div class="sidebar-user">
+
+            <div class="user-avatar">
+                AD
+            </div>
+
+            <div class="user-info">
+
+                <strong>
+                    System Admin
+                </strong>
+
+                <span>
+                    Administrator
+                </span>
+
+            </div>
+
+            <button class="user-menu"
+                    type="button">
+
+                <i class="fa-solid fa-ellipsis-vertical"></i>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main-content">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div style="display:flex; align-items:center; gap:12px;">
+
+                <button
+                    class="mobile-menu-btn"
+                    id="mobileMenuBtn"
+                    type="button">
+
+                    <i class="fa-solid fa-bars"></i>
+
+                </button>
+
+
+                <div class="page-title">
+
+                    <h1>
+                        Admin Dashboard
+                    </h1>
+
+                    <p>
+                        Complete control over your SmartHR system
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <button
+                    class="notification"
+                    type="button">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+
+                <div class="user-avatar">
+                    AD
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <section class="content">
+
+
+            <!-- WELCOME -->
+
+            <div class="welcome-card">
+
+                <div>
+
+                    <h2>
+                        Welcome Back, Administrator 👋
+                    </h2>
+
+                    <p>
+                        Monitor and manage your complete HR system from here.
+                    </p>
+
+                </div>
+
+
+                <div class="welcome-action">
+
+                    <button
+    id="systemSettings"
+    type="button"
+    onclick="window.location.href='setting.html'">
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= STATISTICS ================= -->
+
+            <div class="stats-grid">
+
+
+                <!-- TOTAL -->
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+
+                        <div>
+
+                            <div class="stat-label">
+                                TOTAL USERS
+                            </div>
+
+                            <div
+                                class="stat-number"
+                                id="totalUsers">
+
+                                0
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="stat-icon green">
+
+                            <i class="fa-solid fa-users"></i>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-change up">
+
+                        <i class="fa-solid fa-database"></i>
+
+                        Live database users
+
+                    </div>
+
+                </div>
+
+
+                <!-- HR -->
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+
+                        <div>
+
+                            <div class="stat-label">
+                                HR MANAGERS
+                            </div>
+
+                            <div
+                                class="stat-number"
+                                id="hrManagers">
+
+                                0
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="stat-icon blue">
+
+                            <i class="fa-solid fa-user-tie"></i>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-change up">
+
+                        <i class="fa-solid fa-database"></i>
+
+                        Live database count
+
+                    </div>
+
+                </div>
+
+
+                <!-- ACTIVE -->
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+
+                        <div>
+
+                            <div class="stat-label">
+                                ACTIVE USERS
+                            </div>
+
+                            <div
+                                class="stat-number"
+                                id="activeUsers">
+
+                                0
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="stat-icon green">
+
+                            <i class="fa-solid fa-user-check"></i>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-change up">
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        Currently active
+
+                    </div>
+
+                </div>
+
+
+                <!-- INACTIVE -->
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+
+                        <div>
+
+                            <div class="stat-label">
+                                INACTIVE USERS
+                            </div>
+
+                            <div
+                                class="stat-number"
+                                id="inactiveUsers">
+
+                                0
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="stat-icon orange">
+
+                            <i class="fa-solid fa-user-xmark"></i>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-change">
+
+                        <i class="fa-solid fa-circle-info"></i>
+
+                        Currently inactive
+
+                    </div>
+
+                </div>
+
+
+                <!-- MANAGERS -->
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+
+                        <div>
+
+                            <div class="stat-label">
+                                MANAGERS
+                            </div>
+
+                            <div
+                                class="stat-number"
+                                id="managerUsers">
+
+                                0
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="stat-icon purple">
+
+                            <i class="fa-solid fa-people-group"></i>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-change up">
+
+                        <i class="fa-solid fa-database"></i>
+
+                        Live database count
+
+                    </div>
+
+                </div>
+
+
+                <!-- EMPLOYEES -->
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+
+                        <div>
+
+                            <div class="stat-label">
+                                EMPLOYEES
+                            </div>
+
+                            <div
+                                class="stat-number"
+                                id="employeeUsers">
+
+                                0
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="stat-icon blue">
+
+                            <i class="fa-solid fa-id-card"></i>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-change up">
+
+                        <i class="fa-solid fa-database"></i>
+
+                        Live database count
+
+                    </div>
+
+                </div>
+
+
+                <!-- DEPARTMENTS -->
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+
+                        <div>
+
+                            <div class="stat-label">
+                                DEPARTMENTS
+                            </div>
+
+                            <div class="stat-number">
+                                12
+                            </div>
+
+                        </div>
+
+
+                        <div class="stat-icon orange">
+
+                            <i class="fa-solid fa-building"></i>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-change">
+
+                        All departments active
+
+                    </div>
+
+                </div>
+
+
+                <!-- UPTIME -->
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+
+                        <div>
+
+                            <div class="stat-label">
+                                SYSTEM UPTIME
+                            </div>
+
+                            <div class="stat-number">
+                                99.9%
+                            </div>
+
+                        </div>
+
+
+                        <div class="stat-icon purple">
+
+                            <i class="fa-solid fa-server"></i>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-change up">
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        System healthy
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= LOWER PANELS ================= -->
+
+            <div class="dashboard-grid">
+
+
+                <!-- USER MANAGEMENT -->
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h3>
+                                User Management
+                            </h3>
+
+                            <span>
+                                Manage system users
+                            </span>
+
+                        </div>
+
+
+                        <button
+                            class="dashboard-btn primary"
+                            id="addUserBtn"
+                            type="button">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                            Add User
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="panel-body">
+
+                        <div class="quick-actions">
+
+
+                            <button
+                                class="quick-action"
+                                type="button"
+                                onclick="openUsersPage()">
+
+                                <i class="fa-solid fa-user-plus"></i>
+
+                                <span>
+                                    Create User
+                                </span>
+
+                            </button>
+
+
+                            <button
+                                class="quick-action"
+                                type="button"
+                                onclick="openUsersPage()">
+
+                                <i class="fa-solid fa-user-pen"></i>
+
+                                <span>
+                                    Edit Users
+                                </span>
+
+                            </button>
+
+
+                            <button
+                                class="quick-action"
+                                type="button"
+                                onclick="openUsersPage()">
+
+                                <i class="fa-solid fa-user-lock"></i>
+
+                                <span>
+                                    Permissions
+                                </span>
+
+                            </button>
+
+
+                            <button
+                                class="quick-action"
+                                type="button"
+                                onclick="openUsersPage()">
+
+                                <i class="fa-solid fa-user-slash"></i>
+
+                                <span>
+                                    Deactivate
+                                </span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SYSTEM STATUS -->
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h3>
+                                System Status
+                            </h3>
+
+                            <span>
+                                Live system monitoring
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="panel-body">
+
+
+                        <div class="progress-item">
+
+                            <div class="progress-header">
+
+                                <span>
+                                    Server
+                                </span>
+
+                                <strong>
+                                    Online
+                                </strong>
+
+                            </div>
+
+                            <div class="progress-bar">
+
+                                <div
+                                    class="progress-fill"
+                                    style="width:98%;">
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-item">
+
+                            <div class="progress-header">
+
+                                <span>
+                                    Database
+                                </span>
+
+                                <strong>
+                                    Online
+                                </strong>
+
+                            </div>
+
+                            <div class="progress-bar">
+
+                                <div
+                                    class="progress-fill"
+                                    style="width:96%;">
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-item">
+
+                            <div class="progress-header">
+
+                                <span>
+                                    Authentication
+                                </span>
+
+                                <strong>
+                                    Secure
+                                </strong>
+
+                            </div>
+
+                            <div class="progress-bar">
+
+                                <div
+                                    class="progress-fill"
+                                    style="width:100%;">
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-item">
+
+                            <div class="progress-header">
+
+                                <span>
+                                    API Services
+                                </span>
+
+                                <strong>
+                                    Online
+                                </strong>
+
+                            </div>
+
+                            <div class="progress-bar">
+
+                                <div
+                                    class="progress-fill"
+                                    style="width:98%;">
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="admin.js"></script>
+
+</body>
+
+</html>

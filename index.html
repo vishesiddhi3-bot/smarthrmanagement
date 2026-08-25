@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartHR | Intelligent HR Management</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+    <a href="#home" class="brand">
+
+        <span class="brand-mark">
+            <i class="fa-solid fa-users"></i>
+        </span>
+
+        <span>
+            Smart<span>HR</span>
+            <small>Intelligent HR Management</small>
+        </span>
+
+    </a>
+
+
+    <nav class="nav-links" id="navLinks">
+
+        <a href="#home" class="active">Home</a>
+        <a href="#features">Features</a>
+        <a href="#modules">Modules</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact</a>
+
+    </nav>
+
+
+    <button class="nav-login" id="navLogin">
+        <i class="fa-regular fa-user"></i>
+        Login
+    </button>
+
+
+    <button class="menu-toggle" id="menuToggle">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+
+</header>
+
+
+<!-- ================= MAIN ================= -->
+
+<main>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-copy">
+
+        <span class="eyebrow">
+            <i class="fa-solid fa-circle-check"></i>
+            All-in-One HR Management Solution
+        </span>
+
+
+        <h1>
+            Manage People.<br>
+            Empower Performance.<br>
+            <span>Grow Together.</span>
+        </h1>
+
+
+        <p>
+            SmartHR helps organizations manage employees, attendance,
+            leaves, payroll and performance from one simple and powerful platform.
+        </p>
+
+
+        <div class="hero-actions">
+
+            <button class="btn btn-primary" id="heroLogin">
+                Get Started
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+            <a href="#features" class="btn btn-outline">
+                Explore Features
+                <i class="fa-solid fa-grid-2"></i>
+            </a>
+
+        </div>
+
+
+        <div class="trust-row">
+
+            <div class="mini-avatar">R</div>
+            <div class="mini-avatar">P</div>
+            <div class="mini-avatar">A</div>
+            <div class="mini-avatar">S</div>
+
+            <div>
+                <strong>500+ Employees</strong>
+                <span>managed with SmartHR</span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= LOGIN CARD ================= -->
+
+    <div class="login-wrap" id="loginSection">
+
+        <div class="login-card">
+
+            <div class="login-heading">
+
+                <span class="login-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </span>
+
+                <h2>Welcome Back!</h2>
+
+                <p>
+                    Login to access your dashboard
+                </p>
+
+            </div>
+
+
+            <div class="role-label">
+                Login As
+            </div>
+
+
+            <!-- ROLE SELECTION -->
+
+            <div class="role-grid" id="roleGrid">
+
+                <button class="role-option active"
+                        data-role="HR Manager">
+
+                    <i class="fa-solid fa-user-tie"></i>
+
+                    <span>HR Manager</span>
+
+                </button>
+
+
+                <button class="role-option"
+                        data-role="Admin">
+
+                    <i class="fa-solid fa-user-shield"></i>
+
+                    <span>Admin</span>
+
+                </button>
+
+
+                <button class="role-option"
+                        data-role="Manager">
+
+                    <i class="fa-solid fa-people-group"></i>
+
+                    <span>Manager</span>
+
+                </button>
+
+
+                <button class="role-option"
+                        data-role="Employee">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    <span>Employee</span>
+
+                </button>
+
+            </div>
+
+
+            <!-- LOGIN FORM -->
+
+            <form id="loginForm">
+
+                <label for="email">
+                    Email Address
+                </label>
+
+
+                <div class="input-box">
+
+                    <i class="fa-regular fa-envelope"></i>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                    >
+
+                </div>
+
+
+                <label for="password">
+                    Password
+                </label>
+
+
+                <div class="input-box">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                    >
+
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        id="passwordToggle">
+
+                        <i class="fa-regular fa-eye"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="login-options">
+
+                    <label class="remember">
+
+                        <input
+                            type="checkbox"
+                            id="remember"
+                        >
+
+                        Remember me
+
+                    </label>
+
+
+                    <a href="#" id="forgotPassword">
+                        Forgot Password?
+                    </a>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn login-submit">
+
+                    Login
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+
+                <p
+                    class="login-message"
+                    id="loginMessage">
+                </p>
+
+            </form>
+
+<!-- ================= REGISTER ================= -->
+
+<div class="register-divider">
+    <span>New to SmartHR?</span>
+</div>
+
+<button type="button" class="register-link" id="showRegister">
+    Create an Account
+</button>
+
+
+<!-- REGISTER FORM -->
+
+<form id="registerForm" class="register-form">
+
+    <label for="registerUsername">
+        Full Name
+    </label>
+
+    <div class="input-box">
+
+        <i class="fa-regular fa-user"></i>
+
+        <input
+            type="text"
+            id="registerUsername"
+            placeholder="Enter your full name"
+            required
+        >
+
+    </div>
+
+
+    <label for="registerEmail">
+        Email Address
+    </label>
+
+    <div class="input-box">
+
+        <i class="fa-regular fa-envelope"></i>
+
+        <input
+            type="email"
+            id="registerEmail"
+            placeholder="Enter your email"
+            required
+        >
+
+    </div>
+
+
+    <label for="registerPassword">
+        Password
+    </label>
+
+    <div class="input-box">
+
+        <i class="fa-solid fa-lock"></i>
+
+        <input
+            type="password"
+            id="registerPassword"
+            placeholder="Create a password"
+            required
+        >
+
+    </div>
+
+
+    <label for="registerRole">
+        Select Role
+    </label>
+
+    <div class="input-box">
+
+        <i class="fa-solid fa-user-tag"></i>
+
+        <select id="registerRole" required>
+
+            <option value="">
+                Select your role
+            </option>
+
+            <option value="employee">
+                Employee
+            </option>
+
+            <option value="manager">
+                Manager
+            </option>
+
+            <option value="hr">
+                HR Manager
+            </option>
+
+            <option value="admin">
+                Admin
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <button
+        type="submit"
+        class="btn login-submit">
+
+        Create Account
+
+        <i class="fa-solid fa-user-plus"></i>
+
+    </button>
+
+
+    <p
+        class="login-message"
+        id="registerMessage">
+    </p>
+
+</form>
+            <div class="login-note">
+<i class="fa-solid fa-circle-check"></i>
+
+Secure authentication powered by SmartHR
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section class="features section" id="features">
+
+    <div class="section-heading">
+
+        <span>FEATURES</span>
+
+        <h2>
+            Everything you need to simplify HR management
+        </h2>
+
+        <p>
+            Essential tools for managing your workforce efficiently.
+        </p>
+
+    </div>
+
+
+    <div class="feature-grid">
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon green">
+                <i class="fa-solid fa-users"></i>
+            </div>
+
+            <h3>Employee Management</h3>
+
+            <p>
+                Manage employee profiles, departments,
+                positions and documents.
+            </p>
+
+        </article>
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon blue">
+                <i class="fa-solid fa-clock"></i>
+            </div>
+
+            <h3>Attendance Tracking</h3>
+
+            <p>
+                Track attendance, working hours,
+                late arrivals and overtime.
+            </p>
+
+        </article>
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon orange">
+                <i class="fa-solid fa-calendar-check"></i>
+            </div>
+
+            <h3>Leave Management</h3>
+
+            <p>
+                Make leave applications and approvals simple.
+            </p>
+
+        </article>
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon purple">
+                <i class="fa-solid fa-wallet"></i>
+            </div>
+
+            <h3>Payroll Management</h3>
+
+            <p>
+                Manage salaries, deductions,
+                bonuses and payslips.
+            </p>
+
+        </article>
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon red">
+                <i class="fa-solid fa-chart-line"></i>
+            </div>
+
+            <h3>Performance Management</h3>
+
+            <p>
+                Track performance and employee progress.
+            </p>
+
+        </article>
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon teal">
+                <i class="fa-solid fa-arrow-trend-up"></i>
+            </div>
+
+            <h3>Employee Growth</h3>
+
+            <p>
+                Monitor skills, progress and career development.
+            </p>
+
+        </article>
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon gold">
+                <i class="fa-solid fa-trophy"></i>
+            </div>
+
+            <h3>Recognition & Rewards</h3>
+
+            <p>
+                Recognize achievements and reward employees.
+            </p>
+
+        </article>
+
+
+        <article class="feature-card">
+
+            <div class="feature-icon cyan">
+                <i class="fa-solid fa-lightbulb"></i>
+            </div>
+
+            <h3>Suggestions System</h3>
+
+            <p>
+                Employees can share ideas and suggestions.
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- ================= MODULES ================= -->
+
+<section class="modules section" id="modules">
+
+    <div class="section-heading">
+
+        <span>SMART MODULES</span>
+
+        <h2>
+            Built for modern workplaces
+        </h2>
+
+        <p>
+            Simple modules that cover everyday HR operations.
+        </p>
+
+    </div>
+
+
+    <div class="module-grid">
+
+        <div class="module-card">
+            <i class="fa-solid fa-id-card"></i>
+            <h3>Skills</h3>
+            <p>Maintain employee skill profiles.</p>
+        </div>
+
+
+        <div class="module-card">
+            <i class="fa-solid fa-chart-simple"></i>
+            <h3>Growth Tracker</h3>
+            <p>Compare employee progress.</p>
+        </div>
+
+
+        <div class="module-card">
+            <i class="fa-solid fa-list-check"></i>
+            <h3>Workload</h3>
+            <p>Track employee workload.</p>
+        </div>
+
+
+        <div class="module-card">
+            <i class="fa-solid fa-medal"></i>
+            <h3>Recognition</h3>
+            <p>Reward employees.</p>
+        </div>
+
+
+        <div class="module-card">
+            <i class="fa-solid fa-comments"></i>
+            <h3>Suggestions</h3>
+            <p>Collect employee ideas.</p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= STATS ================= -->
+
+<section class="stats-strip">
+
+    <div>
+        <strong>500+</strong>
+        <span>Employees Managed</span>
+    </div>
+
+    <div>
+        <strong>12</strong>
+        <span>Departments</span>
+    </div>
+
+    <div>
+        <strong>98%</strong>
+        <span>Attendance Accuracy</span>
+    </div>
+
+    <div>
+        <strong>24/7</strong>
+        <span>System Availability</span>
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="about section" id="about">
+
+    <div>
+
+        <span class="section-label">
+            ABOUT SMARTHR
+        </span>
+
+        <h2>
+            Making HR management simple and effective.
+        </h2>
+
+        <p>
+            SmartHR brings essential HR operations into one
+            organized platform. From employee management to
+            performance tracking, everything is designed to
+            save time and improve workplace management.
+        </p>
+
+
+        <div class="check-list">
+
+            <p>
+                <i class="fa-solid fa-circle-check"></i>
+                Easy employee management
+            </p>
+
+            <p>
+                <i class="fa-solid fa-circle-check"></i>
+                Simple attendance and leave tracking
+            </p>
+
+            <p>
+                <i class="fa-solid fa-circle-check"></i>
+                Clear performance and growth insights
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="about-panel">
+
+        <strong>SmartHR</strong>
+
+        <span>
+            One platform for your complete HR workflow.
+        </span>
+
+
+        <div class="about-mini">
+
+            <div>
+                <b>4</b>
+                <small>User Roles</small>
+            </div>
+
+            <div>
+                <b>8+</b>
+                <small>Core Features</small>
+            </div>
+
+            <div>
+                <b>5</b>
+                <small>Smart Modules</small>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CONTACT CTA ================= -->
+
+<section class="contact section" id="contact">
+
+    <div>
+
+        <span class="section-label">
+            GET STARTED
+        </span>
+
+        <h2>
+            Ready to simplify your HR?
+        </h2>
+
+        <p>
+            Login and manage your workforce from one dashboard.
+        </p>
+
+    </div>
+
+
+    <button
+        class="btn btn-primary"
+        id="contactLogin">
+
+        Open Login
+
+        <i class="fa-solid fa-arrow-right"></i>
+
+    </button>
+
+</section>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-brand">
+
+        <span class="brand-mark">
+            <i class="fa-solid fa-users"></i>
+        </span>
+
+        <div>
+
+            <strong>
+                Smart<span>HR</span>
+            </strong>
+
+            <small>
+                Intelligent HR Management
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <p>
+        © 2026 SmartHR. All rights reserved.
+    </p>
+
+
+    <div class="footer-links">
+
+        <a href="#home">Home</a>
+        <a href="#features">Features</a>
+        <a href="#modules">Modules</a>
+        <a href="#contact">Contact</a>
+
+    </div>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

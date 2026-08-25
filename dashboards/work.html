@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartHR | My Work</title>
+
+    <link rel="stylesheet" href="work.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="work-page">
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="work-header">
+
+        <div class="header-left">
+
+            <button
+                type="button"
+                class="back-btn"
+                id="backDashboard">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+            </button>
+
+            <div>
+
+                <h1>
+                    <i class="fa-solid fa-briefcase"></i>
+                    My Work
+                </h1>
+
+                <p>
+                    View and manage your assigned tasks.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="employee-box">
+
+            <div class="employee-avatar">
+                <i class="fa-solid fa-user"></i>
+            </div>
+
+            <div>
+
+                <strong id="employeeName">
+                    Employee
+                </strong>
+
+                <span id="employeeCode">
+                    Employee
+                </span>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= MESSAGE ================= -->
+
+    <div
+        id="workMessage"
+        class="work-message">
+    </div>
+
+
+    <!-- ================= STATS ================= -->
+
+    <section class="work-stats">
+
+        <div class="work-stat total">
+
+            <div class="stat-icon">
+                <i class="fa-solid fa-list-check"></i>
+            </div>
+
+            <div>
+
+                <span>Total</span>
+
+                <strong id="totalTasks">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="work-stat pending">
+
+            <div class="stat-icon">
+                <i class="fa-solid fa-clock"></i>
+            </div>
+
+            <div>
+
+                <span>Pending</span>
+
+                <strong id="pendingTasks">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="work-stat progress">
+
+            <div class="stat-icon">
+                <i class="fa-solid fa-spinner"></i>
+            </div>
+
+            <div>
+
+                <span>In Progress</span>
+
+                <strong id="progressTasks">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="work-stat completed">
+
+            <div class="stat-icon">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+
+            <div>
+
+                <span>Completed</span>
+
+                <strong id="completedTasks">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= TASK CARD ================= -->
+
+    <section class="tasks-card">
+
+        <div class="tasks-header">
+
+            <div>
+
+                <h2>
+                    <i class="fa-solid fa-list-check"></i>
+                    Assigned Tasks
+                </h2>
+
+                <p>
+                    Tasks assigned to you by HR or your manager.
+                </p>
+
+            </div>
+
+            <button
+                type="button"
+                id="refreshTasks"
+                class="refresh-btn">
+
+                <i class="fa-solid fa-rotate"></i>
+                Refresh
+
+            </button>
+
+        </div>
+
+
+        <!-- ================= LOADING ================= -->
+
+        <div
+            id="loadingBox"
+            class="loading-box">
+
+            <i class="fa-solid fa-spinner fa-spin"></i>
+
+            <span>
+                Loading your tasks...
+            </span>
+
+        </div>
+
+
+        <!-- ================= NO TASKS ================= -->
+
+        <div
+            id="emptyBox"
+            class="empty-box"
+            style="display:none;">
+
+            <div class="empty-icon">
+                <i class="fa-solid fa-clipboard-check"></i>
+            </div>
+
+            <h3>
+                No Tasks Assigned
+            </h3>
+
+            <p>
+                You currently don't have any tasks assigned.
+            </p>
+
+        </div>
+
+
+        <!-- ================= TASK LIST ================= -->
+
+        <div
+            id="taskList"
+            class="task-list">
+        </div>
+
+    </section>
+
+
+</div>
+
+
+<script src="work.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>SmartHR | Settings</title>
+
+<link rel="stylesheet" href="../dashboard.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+.settings-container {
+    padding: 25px;
+    max-width: 1000px;
+}
+
+.settings-card {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.06);
+}
+
+.settings-card h2 {
+    margin-bottom: 5px;
+}
+
+.settings-card p {
+    color: #6b7280;
+    margin-bottom: 20px;
+}
+
+.setting-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0;
+    border-bottom: 1px solid #e5e7eb;
+    gap: 20px;
+}
+
+.setting-row:last-child {
+    border-bottom: none;
+}
+
+.setting-info strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.setting-info span {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.setting-row input,
+.setting-row select {
+    padding: 9px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 7px;
+}
+
+.toggle {
+    width: 45px;
+    height: 23px;
+}
+
+.save-settings {
+    background: #4f46e5;
+    color: white;
+    border: none;
+    padding: 11px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.success-message {
+    display: none;
+    margin-top: 15px;
+    background: #ecfdf5;
+    color: #047857;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<aside class="sidebar">
+
+<div class="sidebar-logo">
+
+<div class="logo-icon">
+<i class="fa-solid fa-users"></i>
+</div>
+
+<div>
+<div class="logo-text">
+Smart<span>HR</span>
+</div>
+
+<small class="logo-subtitle">
+INTELLIGENT HR MANAGEMENT
+</small>
+</div>
+
+</div>
+
+
+<div class="sidebar-menu">
+
+<div class="menu-title">
+ADMIN MENU
+</div>
+
+<a href="admin.html">
+<i class="fa-solid fa-chart-pie"></i>
+Dashboard
+</a>
+
+<a href="users.html">
+<i class="fa-solid fa-users"></i>
+User Management
+</a>
+
+<a href="departments.html">
+<i class="fa-solid fa-building"></i>
+Departments
+</a>
+
+<a href="roles-permissions.html">
+<i class="fa-solid fa-user-shield"></i>
+Roles & Permissions
+</a>
+
+<div class="sidebar-divider"></div>
+
+<div class="menu-title">
+SYSTEM
+</div>
+
+<a href="reports.html">
+<i class="fa-solid fa-chart-column"></i>
+System Reports
+</a>
+
+<a href="database.html">
+<i class="fa-solid fa-database"></i>
+Database
+</a>
+
+<a href="settings.html" class="active">
+<i class="fa-solid fa-gear"></i>
+Settings
+</a>
+
+<div class="sidebar-divider"></div>
+
+<a href="../index.html">
+<i class="fa-solid fa-right-from-bracket"></i>
+Logout
+</a>
+
+</div>
+
+
+<div class="sidebar-user">
+
+<div class="user-avatar">
+AD
+</div>
+
+<div class="user-info">
+<strong>System Admin</strong>
+<span>Administrator</span>
+</div>
+
+</div>
+
+</aside>
+
+
+<main class="main-content">
+
+<header class="topbar">
+
+<div class="page-title">
+
+<h1>System Settings</h1>
+
+<p>Configure SmartHR system preferences</p>
+
+</div>
+
+<div class="topbar-right">
+
+<div class="user-avatar">
+AD
+</div>
+
+</div>
+
+</header>
+
+
+<section class="content">
+
+<div class="settings-container">
+
+
+<div class="settings-card">
+
+<h2>General Settings</h2>
+
+<p>Basic SmartHR configuration.</p>
+
+
+<div class="setting-row">
+
+<div class="setting-info">
+<strong>Company Name</strong>
+<span>Name displayed throughout the system.</span>
+</div>
+
+<input
+type="text"
+id="companyName"
+value="SmartHR">
+
+</div>
+
+
+<div class="setting-row">
+
+<div class="setting-info">
+<strong>Default Language</strong>
+<span>System interface language.</span>
+</div>
+
+<select id="language">
+
+<option value="English">
+English
+</option>
+
+<option value="Hindi">
+Hindi
+</option>
+
+</select>
+
+</div>
+
+
+<div class="setting-row">
+
+<div class="setting-info">
+<strong>Timezone</strong>
+<span>Timezone used by the application.</span>
+</div>
+
+<select id="timezone">
+
+<option value="Asia/Kolkata">
+Asia/Kolkata (IST)
+</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+<div class="settings-card">
+
+<h2>Security</h2>
+
+<p>Manage basic security preferences.</p>
+
+
+<div class="setting-row">
+
+<div class="setting-info">
+<strong>Two Factor Authentication</strong>
+<span>Require additional authentication.</span>
+</div>
+
+<input
+class="toggle"
+type="checkbox"
+id="twoFactor">
+
+</div>
+
+
+<div class="setting-row">
+
+<div class="setting-info">
+<strong>Login Notifications</strong>
+<span>Notify administrator when a user logs in.</span>
+</div>
+
+<input
+class="toggle"
+type="checkbox"
+id="loginNotifications"
+checked>
+
+</div>
+
+</div>
+
+
+<div class="settings-card">
+
+<h2>System Preferences</h2>
+
+<p>Application behaviour preferences.</p>
+
+
+<div class="setting-row">
+
+<div class="setting-info">
+<strong>Email Notifications</strong>
+<span>Enable system email notifications.</span>
+</div>
+
+<input
+class="toggle"
+type="checkbox"
+id="emailNotifications"
+checked>
+
+</div>
+
+
+<div class="setting-row">
+
+<div class="setting-info">
+<strong>Maintenance Mode</strong>
+<span>Temporarily restrict system access.</span>
+</div>
+
+<input
+class="toggle"
+type="checkbox"
+id="maintenance">
+
+</div>
+
+</div>
+
+
+<button
+class="save-settings"
+onclick="saveSettings()">
+
+<i class="fa-solid fa-save"></i>
+Save Settings
+
+</button>
+
+
+<div
+id="successMessage"
+class="success-message">
+
+Settings saved successfully.
+
+</div>
+
+
+</div>
+
+</section>
+
+</main>
+
+</div>
+
+
+<script>
+
+function saveSettings() {
+
+const settings = {
+
+companyName:
+document.getElementById("companyName").value,
+
+language:
+document.getElementById("language").value,
+
+timezone:
+document.getElementById("timezone").value,
+
+twoFactor:
+document.getElementById("twoFactor").checked,
+
+loginNotifications:
+document.getElementById("loginNotifications").checked,
+
+emailNotifications:
+document.getElementById("emailNotifications").checked,
+
+maintenance:
+document.getElementById("maintenance").checked
+
+};
+
+localStorage.setItem(
+"smarthr_settings",
+JSON.stringify(settings)
+);
+
+document.getElementById(
+"successMessage"
+).style.display = "block";
+
+setTimeout(() => {
+
+document.getElementById(
+"successMessage"
+).style.display = "none";
+
+}, 2500);
+
+}
+
+
+function loadSettings() {
+
+const saved =
+localStorage.getItem("smarthr_settings");
+
+if (!saved) return;
+
+const settings =
+JSON.parse(saved);
+
+document.getElementById("companyName").value =
+settings.companyName || "SmartHR";
+
+document.getElementById("language").value =
+settings.language || "English";
+
+document.getElementById("timezone").value =
+settings.timezone || "Asia/Kolkata";
+
+document.getElementById("twoFactor").checked =
+!!settings.twoFactor;
+
+document.getElementById("loginNotifications").checked =
+settings.loginNotifications !== false;
+
+document.getElementById("emailNotifications").checked =
+settings.emailNotifications !== false;
+
+document.getElementById("maintenance").checked =
+!!settings.maintenance;
+
+}
+
+loadSettings();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartHR | User Management</title>
+
+    <link rel="stylesheet" href="users.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<!-- ==========================================
+     SIDEBAR
+========================================== -->
+
+<aside class="sidebar">
+
+    <div class="sidebar-brand">
+
+        <div class="brand-icon">
+            <i class="fa-solid fa-users"></i>
+        </div>
+
+        <div>
+            <strong>SmartHR</strong>
+            <small>Admin Panel</small>
+        </div>
+
+    </div>
+
+
+    <nav>
+
+        <a href="admin.html">
+            <i class="fa-solid fa-chart-line"></i>
+            <span>Dashboard</span>
+        </a>
+
+        <a href="users.html" class="active">
+            <i class="fa-solid fa-users"></i>
+            <span>User Management</span>
+        </a>
+
+        <a href="employees.html">
+            <i class="fa-solid fa-user-group"></i>
+            <span>Employees</span>
+        </a>
+
+        <a href="departments.html">
+            <i class="fa-solid fa-building"></i>
+            <span>Departments</span>
+        </a>
+<a href="reports.html" class="active">
+            <i class="fa-solid fa-chart-column"></i>
+            System Reports
+        </a>
+
+
+        <a href="roles-permissions.html">
+            <i class="fa-solid fa-user-shield"></i>
+            Roles & Permissions
+        </a>
+
+
+        <div class="sidebar-divider"></div>
+
+
+        <a href="#" onclick="comingSoon('Audit Logs'); return false;">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            Audit Logs
+        </a>
+
+
+        <a href="database.html">
+            <i class="fa-solid fa-database"></i>
+            Database
+        </a>
+
+
+        <a href="setting.html">
+            <i class="fa-solid fa-gear"></i>
+            Settings
+        </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <a href="#" onclick="comingSoon('Settings'); return false;">
+            <i class="fa-solid fa-gear"></i>
+            <span>Settings</span>
+        </a>
+
+        <a href="../index.html">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Logout</span>
+        </a>
+
+    </div>
+
+</aside>
+
+
+
+<!-- ==========================================
+     MAIN
+========================================== -->
+
+<main class="dashboard-main">
+
+
+    <!-- HEADER -->
+
+    <header class="dashboard-header">
+
+        <div class="header-left">
+
+            <button
+                class="mobile-menu-btn"
+                id="mobileMenuBtn"
+                type="button">
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+            <div>
+
+                <h1>User Management</h1>
+
+                <p>
+                    Manage SmartHR system users and their access.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-profile">
+
+            <div class="profile-icon">
+                <i class="fa-solid fa-user-shield"></i>
+            </div>
+
+            <div>
+                <strong>Admin</strong>
+                <span>Administrator</span>
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ==========================================
+         STATISTICS
+    ========================================== -->
+
+    <section class="user-stats">
+
+        <div class="user-stat-card">
+
+            <div class="stat-icon blue">
+                <i class="fa-solid fa-users"></i>
+            </div>
+
+            <div>
+                <span>Total Users</span>
+                <strong id="totalUsers">0</strong>
+            </div>
+
+        </div>
+
+
+        <div class="user-stat-card">
+
+            <div class="stat-icon green">
+                <i class="fa-solid fa-user-check"></i>
+            </div>
+
+            <div>
+                <span>Active Users</span>
+                <strong id="activeUsers">0</strong>
+            </div>
+
+        </div>
+
+
+        <div class="user-stat-card">
+
+            <div class="stat-icon orange">
+                <i class="fa-solid fa-user-xmark"></i>
+            </div>
+
+            <div>
+                <span>Inactive Users</span>
+                <strong id="inactiveUsers">0</strong>
+            </div>
+
+        </div>
+
+
+        <div class="user-stat-card">
+
+            <div class="stat-icon purple">
+                <i class="fa-solid fa-user-tie"></i>
+            </div>
+
+            <div>
+                <span>HR Managers</span>
+                <strong id="hrCount">0</strong>
+            </div>
+
+        </div>
+
+
+        <div class="user-stat-card">
+
+            <div class="stat-icon pink">
+                <i class="fa-solid fa-people-group"></i>
+            </div>
+
+            <div>
+                <span>Managers</span>
+                <strong id="managerCount">0</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         USERS SECTION
+    ========================================== -->
+
+    <section class="user-section">
+
+        <div class="section-top">
+
+            <div>
+
+                <h2>System Users</h2>
+
+                <p>
+                    View and manage registered users.
+                </p>
+
+            </div>
+
+
+            <button 
+    class="add-user-btn" 
+    id="addUserBtn" 
+    type="button">
+
+    <i class="fa-solid fa-plus"></i>
+    Add User
+
+</button>
+
+        </div>
+
+
+
+        <!-- SEARCH + FILTER -->
+
+        <div class="user-tools">
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="userSearch"
+                    placeholder="Search by name or email...">
+
+            </div>
+
+
+            <select id="roleFilter">
+
+                <option value="all">All Roles</option>
+
+                <option value="admin">Admin</option>
+
+                <option value="hr">HR Manager</option>
+
+                <option value="manager">Manager</option>
+
+                <option value="employee">Employee</option>
+
+            </select>
+
+
+            <select id="statusFilter">
+
+                <option value="all">All Status</option>
+
+                <option value="active">Active</option>
+
+                <option value="inactive">Inactive</option>
+
+            </select>
+
+
+            <button
+                class="refresh-btn"
+                id="refreshBtn"
+                type="button">
+
+                <i class="fa-solid fa-rotate"></i>
+
+            </button>
+
+        </div>
+
+
+
+        <!-- TABLE -->
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>User</th>
+
+                        <th>Email</th>
+
+                        <th>Role</th>
+
+                        <th>Status</th>
+
+                        <th>Created</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="usersTableBody">
+
+                    <tr>
+
+                        <td colspan="6" class="loading-cell">
+
+                            <i class="fa-solid fa-spinner fa-spin"></i>
+
+                            Loading users...
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <div class="empty-state" id="emptyState">
+
+            <i class="fa-solid fa-users-slash"></i>
+
+            <h3>No users found</h3>
+
+            <p>
+                Try changing your search or filter.
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- ==========================================
+     ADD / EDIT MODAL
+========================================== -->
+
+<div class="modal-overlay" id="userModal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div>
+
+                <h2 id="modalTitle">
+                    Add New User
+                </h2>
+
+                <p id="modalSubtitle">
+                    Create a new SmartHR user.
+                </p>
+
+            </div>
+
+            <button
+                class="close-modal"
+                id="closeModalBtn"
+                type="button">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+
+        <form id="userForm">
+
+            <input
+                type="hidden"
+                id="editUserId">
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group">
+
+                    <label>
+                        Username
+                        <span>*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="username"
+                        required
+                        placeholder="Enter username">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Email
+                        <span>*</span>
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        required
+                        placeholder="Enter email">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Role
+                        <span>*</span>
+                    </label>
+
+                    <select id="role" required>
+
+                        <option value="">
+                            Select Role
+                        </option>
+
+                        <option value="admin">
+                            Admin
+                        </option>
+
+                        <option value="hr">
+                            HR Manager
+                        </option>
+
+                        <option value="manager">
+                            Manager
+                        </option>
+
+                        <option value="employee">
+                            Employee
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Status
+                    </label>
+
+                    <select id="status">
+
+                        <option value="active">
+                            Active
+                        </option>
+
+                        <option value="inactive">
+                            Inactive
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label>
+                        Password
+                        <span id="passwordRequired">*</span>
+                    </label>
+
+                    <div class="password-input">
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Enter password">
+
+                        <button
+                            type="button"
+                            id="togglePassword">
+
+                            <i class="fa-solid fa-eye"></i>
+
+                        </button>
+
+                    </div>
+
+                    <small id="passwordHelp">
+                        Password is required when creating a user.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="cancel-btn"
+                    id="cancelBtn">
+
+                    Cancel
+
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="save-btn"
+                    id="saveUserBtn">
+
+                    <i class="fa-solid fa-check"></i>
+
+                    Save User
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- ==========================================
+     CONFIRM DELETE MODAL
+========================================== -->
+
+<div class="modal-overlay" id="deleteModal">
+
+    <div class="modal small-modal">
+
+        <div class="delete-icon">
+
+            <i class="fa-solid fa-trash"></i>
+
+        </div>
+
+        <h2>Delete User?</h2>
+
+        <p id="deleteMessage">
+            Are you sure you want to delete this user?
+        </p>
+
+        <div class="modal-actions">
+
+            <button
+                type="button"
+                class="cancel-btn"
+                id="cancelDeleteBtn">
+
+                Cancel
+
+            </button>
+
+            <button
+                type="button"
+                class="delete-btn"
+                id="confirmDeleteBtn">
+
+                <i class="fa-solid fa-trash"></i>
+
+                Delete
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- TOAST -->
+
+<div id="toast" class="toast">
+
+    <i class="fa-solid fa-circle-check"></i>
+
+    <span id="toastMessage">
+        Success
+    </span>
+
+</div>
+
+
+
+<script src="users.js"></script>
+
+</body>
+
+</html>

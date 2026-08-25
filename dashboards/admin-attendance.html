@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SmartHR | Attendance Management</title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #172033;
+        }
+
+        .page {
+            min-height: 100vh;
+        }
+
+        .topbar {
+            height: 75px;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 35px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+
+            background: #2563eb;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .brand strong {
+            font-size: 20px;
+        }
+
+        .brand small {
+            display: block;
+            color: #64748b;
+            margin-top: 2px;
+        }
+
+        .back-btn {
+            border: none;
+            background: #eef2ff;
+            color: #2563eb;
+
+            padding: 10px 16px;
+            border-radius: 9px;
+
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .content {
+            padding: 30px 35px;
+        }
+
+        .heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 25px;
+        }
+
+        .heading h1 {
+            font-size: 28px;
+        }
+
+        .heading p {
+            color: #64748b;
+            margin-top: 6px;
+        }
+
+        .refresh-btn {
+            border: none;
+            background: #2563eb;
+            color: white;
+
+            padding: 11px 17px;
+            border-radius: 9px;
+
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .refresh-btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* ================= STATS ================= */
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 14px;
+
+            padding: 20px;
+
+            display: flex;
+            align-items: center;
+            gap: 15px;
+
+            box-shadow: 0 4px 18px rgba(0, 0, 0, .05);
+        }
+
+        .stat-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 11px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .blue {
+            background: #eff6ff;
+            color: #2563eb;
+        }
+
+        .green {
+            background: #ecfdf5;
+            color: #059669;
+        }
+
+        .orange {
+            background: #fff7ed;
+            color: #ea580c;
+        }
+
+        .purple {
+            background: #f5f3ff;
+            color: #7c3aed;
+        }
+
+        .stat-card span {
+            display: block;
+            color: #64748b;
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+
+        .stat-card strong {
+            font-size: 22px;
+        }
+
+        /* ================= CARD ================= */
+
+        .card {
+            background: white;
+            border-radius: 16px;
+
+            padding: 25px;
+
+            box-shadow: 0 4px 18px rgba(0, 0, 0, .05);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 20px;
+        }
+
+        .card-header h2 {
+            font-size: 20px;
+        }
+
+        .card-header p {
+            color: #64748b;
+            margin-top: 5px;
+            font-size: 14px;
+        }
+
+        .card-header i {
+            font-size: 25px;
+            color: #2563eb;
+        }
+
+        /* ================= FILTERS ================= */
+
+        .filters {
+            background: #f8fafc;
+
+            border: 1px solid #e5e7eb;
+
+            border-radius: 12px;
+
+            padding: 18px;
+
+            margin-bottom: 20px;
+
+            display: grid;
+
+            grid-template-columns:
+                2fr 1fr 1fr auto;
+
+            gap: 12px;
+
+            align-items: end;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .filter-group label {
+            font-size: 12px;
+            font-weight: 700;
+            color: #475569;
+        }
+
+        .filter-group input,
+        .filter-group select {
+
+            width: 100%;
+
+            padding: 11px 12px;
+
+            border: 1px solid #dbe1e8;
+
+            border-radius: 8px;
+
+            background: white;
+
+            outline: none;
+
+            font-size: 14px;
+        }
+
+        .filter-group input:focus,
+        .filter-group select:focus {
+
+            border-color: #2563eb;
+
+            box-shadow:
+                0 0 0 3px rgba(37, 99, 235, .1);
+        }
+
+        .reset-btn {
+
+            border: none;
+
+            background: #e2e8f0;
+
+            color: #334155;
+
+            padding: 11px 15px;
+
+            border-radius: 8px;
+
+            cursor: pointer;
+
+            font-weight: 600;
+        }
+
+        .reset-btn:hover {
+            background: #cbd5e1;
+        }
+
+        /* ================= MESSAGE ================= */
+
+        .message {
+            display: none;
+
+            padding: 12px 15px;
+
+            border-radius: 9px;
+
+            margin-bottom: 18px;
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+        .message.show {
+            display: block;
+        }
+
+        .message.error {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .message.success {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .message.info {
+            background: #eff6ff;
+            color: #1d4ed8;
+        }
+
+        /* ================= TABLE ================= */
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 1050px;
+        }
+
+        th,
+        td {
+            padding: 14px;
+
+            text-align: left;
+
+            border-bottom: 1px solid #edf0f4;
+        }
+
+        th {
+            background: #f8fafc;
+
+            color: #475569;
+
+            font-size: 13px;
+        }
+
+        td {
+            font-size: 14px;
+        }
+
+        tbody tr:hover {
+            background: #fafcff;
+        }
+
+        .employee-name {
+            font-weight: 600;
+        }
+
+        .employee-code {
+            color: #2563eb;
+            font-weight: 600;
+        }
+
+        /* ================= STATUS ================= */
+
+        .status {
+            display: inline-block;
+
+            padding: 5px 10px;
+
+            border-radius: 20px;
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+        .status.present {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .status.absent {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .status.half_day {
+            background: #ffedd5;
+            color: #c2410c;
+        }
+
+        .status.leave {
+            background: #ede9fe;
+            color: #6d28d9;
+        }
+
+        .status.unknown {
+            background: #f1f5f9;
+            color: #475569;
+        }
+
+        .empty {
+            text-align: center;
+            color: #64748b;
+            padding: 45px !important;
+        }
+
+        .empty i {
+            font-size: 35px;
+            margin-bottom: 12px;
+            display: block;
+            color: #94a3b8;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 1000px) {
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .filters {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+        @media (max-width: 700px) {
+
+            .topbar {
+                padding: 0 20px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .heading {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filters {
+                grid-template-columns: 1fr;
+            }
+
+            .brand small {
+                display: none;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="page">
+
+
+    <!-- ================= TOPBAR ================= -->
+
+    <header class="topbar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                <i class="fa-solid fa-users"></i>
+            </div>
+
+            <div>
+
+                <strong>SmartHR</strong>
+
+                <small>
+                    Attendance Management
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="back-btn"
+            onclick="goBack()"
+        >
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Dashboard
+
+        </button>
+
+    </header>
+
+
+
+    <!-- ================= CONTENT ================= -->
+
+    <main class="content">
+
+
+        <div class="heading">
+
+            <div>
+
+                <h1>
+                    Attendance
+                </h1>
+
+                <p>
+                    View, search and filter employee attendance.
+                </p>
+
+            </div>
+
+
+            <button
+                class="refresh-btn"
+                id="refreshBtn"
+            >
+
+                <i class="fa-solid fa-rotate"></i>
+
+                Refresh
+
+            </button>
+
+        </div>
+
+
+
+        <!-- ================= STATS ================= -->
+
+        <section class="stats-grid">
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+
+                    <i class="fa-solid fa-calendar-check"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Records
+                    </span>
+
+                    <strong id="totalRecords">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Present
+                    </span>
+
+                    <strong id="presentCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+
+                    <i class="fa-solid fa-clock"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Half Day
+                    </span>
+
+                    <strong id="halfDayCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+
+                    <i class="fa-solid fa-plane-departure"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        Leave
+                    </span>
+
+                    <strong id="leaveCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ================= ATTENDANCE CARD ================= -->
+
+        <div class="card">
+
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+                        Employee Attendance Records
+                    </h2>
+
+                    <p>
+                        Search and filter attendance records.
+                    </p>
+
+                </div>
+
+
+                <i class="fa-solid fa-calendar-days"></i>
+
+            </div>
+
+
+
+            <!-- ================= FILTERS ================= -->
+
+            <div class="filters">
+
+
+                <!-- SEARCH -->
+
+                <div class="filter-group">
+
+                    <label>
+                        Search Employee
+                    </label>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search by name or employee ID..."
+                    >
+
+                </div>
+
+
+
+                <!-- DATE -->
+
+                <div class="filter-group">
+
+                    <label>
+                        Attendance Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dateFilter"
+                    >
+
+                </div>
+
+
+
+                <!-- STATUS -->
+
+                <div class="filter-group">
+
+                    <label>
+                        Status
+                    </label>
+
+                    <select id="statusFilter">
+
+                        <option value="">
+                            All Status
+                        </option>
+
+                        <option value="present">
+                            Present
+                        </option>
+
+                        <option value="absent">
+                            Absent
+                        </option>
+
+                        <option value="half_day">
+                            Half Day
+                        </option>
+
+                        <option value="leave">
+                            Leave
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- RESET -->
+
+                <button
+                    type="button"
+                    class="reset-btn"
+                    id="resetBtn"
+                >
+
+                    <i class="fa-solid fa-filter-circle-xmark"></i>
+
+                    Reset
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- MESSAGE -->
+
+            <div
+                id="message"
+                class="message"
+            ></div>
+
+
+
+            <!-- TABLE -->
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Employee ID
+                            </th>
+
+                            <th>
+                                Employee Name
+                            </th>
+
+                            <th>
+                                Department
+                            </th>
+
+                            <th>
+                                Designation
+                            </th>
+
+                            <th>
+                                Date
+                            </th>
+
+                            <th>
+                                Check In
+                            </th>
+
+                            <th>
+                                Check Out
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="attendanceTableBody">
+
+                        <tr>
+
+                            <td
+                                colspan="8"
+                                class="empty"
+                            >
+
+                                <i
+                                    class="fa-solid fa-spinner fa-spin"
+                                ></i>
+
+                                Loading attendance...
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+        </div>
+
+
+    </main>
+
+
+</div>
+
+
+
+<script src="admin-attendance.js"></script>
+
+
+</body>
+
+</html>

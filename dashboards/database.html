@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>SmartHR | Database</title>
+
+<link rel="stylesheet" href="../dashboard.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+.database-container {
+    padding: 25px;
+}
+
+.db-grid {
+    display: grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(220px,1fr));
+
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.db-card {
+    background: white;
+    border-radius: 14px;
+    padding: 22px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.06);
+}
+
+.db-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+    background: #eef2ff;
+    color: #4f46e5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.db-number {
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.db-label {
+    color: #6b7280;
+    margin-top: 5px;
+}
+
+.db-status {
+    background: white;
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.06);
+}
+
+.status-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 17px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.status-row:last-child {
+    border-bottom: none;
+}
+
+.online {
+    color: #059669;
+    font-weight: 700;
+}
+
+.refresh-btn {
+    border: none;
+    background: #4f46e5;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="dashboard">
+
+
+<aside class="sidebar">
+
+<div class="sidebar-logo">
+
+<div class="logo-icon">
+<i class="fa-solid fa-users"></i>
+</div>
+
+<div>
+
+<div class="logo-text">
+Smart<span>HR</span>
+</div>
+
+<small class="logo-subtitle">
+INTELLIGENT HR MANAGEMENT
+</small>
+
+</div>
+
+</div>
+
+
+<div class="sidebar-menu">
+
+<div class="menu-title">
+ADMIN MENU
+</div>
+
+<a href="admin.html">
+<i class="fa-solid fa-chart-pie"></i>
+Dashboard
+</a>
+
+<a href="users.html">
+<i class="fa-solid fa-users"></i>
+User Management
+</a>
+
+<a href="departments.html">
+<i class="fa-solid fa-building"></i>
+Departments
+</a>
+
+<a href="roles-permissions.html">
+<i class="fa-solid fa-user-shield"></i>
+Roles & Permissions
+</a>
+
+<div class="sidebar-divider"></div>
+
+<div class="menu-title">
+SYSTEM
+</div>
+
+<a href="reports.html">
+<i class="fa-solid fa-chart-column"></i>
+System Reports
+</a>
+
+<a href="database.html" class="active">
+<i class="fa-solid fa-database"></i>
+Database
+</a>
+
+<a href="settings.html">
+<i class="fa-solid fa-gear"></i>
+Settings
+</a>
+
+<div class="sidebar-divider"></div>
+
+<a href="../index.html">
+<i class="fa-solid fa-right-from-bracket"></i>
+Logout
+</a>
+
+</div>
+
+
+<div class="sidebar-user">
+
+<div class="user-avatar">
+AD
+</div>
+
+<div class="user-info">
+<strong>System Admin</strong>
+<span>Administrator</span>
+</div>
+
+</div>
+
+</aside>
+
+
+<main class="main-content">
+
+
+<header class="topbar">
+
+<div class="page-title">
+
+<h1>Database</h1>
+
+<p>Monitor SmartHR database connection</p>
+
+</div>
+
+
+<div class="topbar-right">
+
+<div class="user-avatar">
+AD
+</div>
+
+</div>
+
+</header>
+
+
+<section class="content">
+
+<div class="database-container">
+
+
+<div class="db-grid">
+
+
+<div class="db-card">
+
+<div class="db-icon">
+<i class="fa-solid fa-server"></i>
+</div>
+
+<div
+class="db-number"
+id="serverStatus">
+
+Checking...
+
+</div>
+
+<div class="db-label">
+Server Status
+</div>
+
+</div>
+
+
+<div class="db-card">
+
+<div class="db-icon">
+<i class="fa-solid fa-database"></i>
+</div>
+
+<div
+class="db-number"
+id="databaseStatus">
+
+Checking...
+
+</div>
+
+<div class="db-label">
+Database Status
+</div>
+
+</div>
+
+
+<div class="db-card">
+
+<div class="db-icon">
+<i class="fa-solid fa-link"></i>
+</div>
+
+<div
+class="db-number"
+id="apiStatus">
+
+Checking...
+
+</div>
+
+<div class="db-label">
+API Status
+</div>
+
+</div>
+
+</div>
+
+
+<div class="db-status">
+
+<h2>
+Database Connection
+</h2>
+
+<p style="color:#6b7280;margin-top:5px;">
+Live connection information
+</p>
+
+
+<div class="status-row">
+
+<span>
+Backend Server
+</span>
+
+<strong
+id="serverText"
+class="online">
+
+Checking...
+
+</strong>
+
+</div>
+
+
+<div class="status-row">
+
+<span>
+MySQL Database
+</span>
+
+<strong
+id="databaseText"
+class="online">
+
+Checking...
+
+</strong>
+
+</div>
+
+
+<div class="status-row">
+
+<span>
+API Connection
+</span>
+
+<strong
+id="apiText"
+class="online">
+
+Checking...
+
+</strong>
+
+</div>
+
+
+<div class="status-row">
+
+<span>
+Backend URL
+</span>
+
+<strong>
+localhost:5000
+</strong>
+
+</div>
+
+
+<button
+class="refresh-btn"
+onclick="checkDatabase()">
+
+<i class="fa-solid fa-rotate"></i>
+
+Refresh Status
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+</div>
+
+
+<script>
+
+async function checkDatabase() {
+
+document.getElementById("serverStatus")
+.innerText = "Checking...";
+
+document.getElementById("databaseStatus")
+.innerText = "Checking...";
+
+document.getElementById("apiStatus")
+.innerText = "Checking...";
+
+
+try {
+
+const response =
+await fetch(
+"http://localhost:5000/"
+);
+
+if (!response.ok)
+throw new Error();
+
+
+document.getElementById("serverStatus")
+.innerText = "Online";
+
+document.getElementById("serverText")
+.innerText = "Online";
+
+
+} catch(error) {
+
+document.getElementById("serverStatus")
+.innerText = "Offline";
+
+document.getElementById("serverText")
+.innerText = "Offline";
+
+}
+
+
+try {
+
+const response =
+await fetch(
+"http://localhost:5000/api/db-test"
+);
+
+const data =
+await response.json();
+
+
+if (data.success) {
+
+document.getElementById("databaseStatus")
+.innerText = "Online";
+
+document.getElementById("databaseText")
+.innerText = "Connected";
+
+} else {
+
+throw new Error();
+
+}
+
+
+} catch(error) {
+
+document.getElementById("databaseStatus")
+.innerText = "Offline";
+
+document.getElementById("databaseText")
+.innerText = "Disconnected";
+
+}
+
+
+try {
+
+const response =
+await fetch(
+"http://localhost:5000/"
+);
+
+if (!response.ok)
+throw new Error();
+
+document.getElementById("apiStatus")
+.innerText = "Online";
+
+document.getElementById("apiText")
+.innerText = "Online";
+
+} catch(error) {
+
+document.getElementById("apiStatus")
+.innerText = "Offline";
+
+document.getElementById("apiText")
+.innerText = "Offline";
+
+}
+
+}
+
+
+checkDatabase();
+
+</script>
+
+</body>
+
+</html>

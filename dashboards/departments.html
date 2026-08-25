@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SmartHR | Departments</title>
+
+    <link rel="stylesheet" href="departments.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+
+    <!-- HEADER -->
+
+    <header class="page-header">
+
+        <div>
+
+            <div class="title-row">
+
+                <button
+                    class="back-btn"
+                    onclick="goBack()"
+                >
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                </button>
+
+
+                <div>
+
+                    <h1>
+                        Departments
+                    </h1>
+
+                    <p>
+                        Manage departments, employees and managers
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="add-btn"
+            onclick="openDepartmentForm()"
+        >
+
+            <i class="fa-solid fa-plus"></i>
+
+            Add Department
+
+        </button>
+
+    </header>
+
+
+
+    <!-- STATISTICS -->
+
+    <section class="stats-grid">
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon purple">
+
+                <i class="fa-solid fa-building"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    Total Departments
+                </span>
+
+                <strong id="totalDepartments">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon blue">
+
+                <i class="fa-solid fa-users"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    Total Employees
+                </span>
+
+                <strong id="totalEmployees">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon green">
+
+                <i class="fa-solid fa-user-tie"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    Managers Assigned
+                </span>
+
+                <strong id="totalManagers">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ADD DEPARTMENT -->
+
+    <section
+        class="form-card"
+        id="departmentFormCard"
+        style="display:none;"
+    >
+
+        <div class="card-header">
+
+            <div>
+
+                <h2>
+                    Add Department
+                </h2>
+
+                <p>
+                    Create a new organization department
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <form id="departmentForm">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label>
+                        Department Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="departmentName"
+                        placeholder="Example: Finance"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Description
+                    </label>
+
+                    <input
+                        type="text"
+                        id="departmentDescription"
+                        placeholder="Department description"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="formMessage"
+                class="form-message"
+            ></div>
+
+
+            <div class="form-actions">
+
+                <button
+                    type="button"
+                    class="cancel-btn"
+                    onclick="closeDepartmentForm()"
+                >
+                    Cancel
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="save-btn"
+                >
+
+                    <i class="fa-solid fa-check"></i>
+
+                    Create Department
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+
+    <!-- DEPARTMENT LIST -->
+
+    <section class="departments-section">
+
+        <div class="section-header">
+
+            <div>
+
+                <h2>
+                    All Departments
+                </h2>
+
+                <p>
+                    Employees and managers by department
+                </p>
+
+            </div>
+
+
+            <button
+                class="refresh-btn"
+                onclick="loadDepartments()"
+            >
+
+                <i class="fa-solid fa-rotate"></i>
+
+                Refresh
+
+            </button>
+
+        </div>
+
+
+        <div
+            id="departmentList"
+            class="department-grid"
+        >
+
+            <div class="loading">
+
+                <i class="fa-solid fa-spinner fa-spin"></i>
+
+                Loading departments...
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+</div>
+
+
+<script src="departments.js"></script>
+
+</body>
+
+</html>

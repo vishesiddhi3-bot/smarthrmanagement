@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        SmartHR | Manager Dashboard
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="manager.css">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+<div class="dashboard">
+
+
+    <!-- =====================================================
+         SIDEBAR
+         ===================================================== -->
+
+    <aside
+        class="sidebar"
+        id="sidebar">
+
+
+        <div class="sidebar-logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-users"></i>
+            </div>
+
+            <div>
+
+                <div class="logo-text">
+                    Smart<span>HR</span>
+                </div>
+
+                <small class="logo-subtitle">
+                    INTELLIGENT HR MANAGEMENT
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="sidebar-menu">
+
+            <div class="menu-title">
+                MANAGER MENU
+            </div>
+
+
+            <a
+                href="#dashboard"
+                class="active">
+
+                <i class="fa-solid fa-chart-pie"></i>
+                Dashboard
+
+            </a>
+
+
+            <a href="#team">
+
+                <i class="fa-solid fa-users"></i>
+                My Team
+
+            </a>
+
+
+            <a href="#attendance">
+
+                <i class="fa-solid fa-clock"></i>
+                Team Attendance
+
+            </a>
+
+
+            <a href="#leaves">
+
+                <i class="fa-solid fa-calendar-check"></i>
+                Leave Requests
+
+            </a>
+
+
+            <a href="#details">
+
+                <i class="fa-solid fa-chart-line"></i>
+                Employee Details
+
+            </a>
+
+
+            <div class="sidebar-divider"></div>
+
+
+            <div class="menu-title">
+                TEAM MANAGEMENT
+            </div>
+
+
+            <a href="#performance">
+
+                <i class="fa-solid fa-bullseye"></i>
+                Performance
+
+            </a>
+
+
+            <a href="#recognition">
+
+                <i class="fa-solid fa-trophy"></i>
+                Recognition
+
+            </a>
+
+
+            <a href="#progress">
+
+                <i class="fa-solid fa-chart-line"></i>
+                Team Progress
+
+            </a>
+
+
+            <div class="sidebar-divider"></div>
+
+
+            <div class="menu-title">
+                SYSTEM
+            </div>
+
+
+            <a href="settings.html">
+
+                <i class="fa-solid fa-gear"></i>
+                Settings
+
+            </a>
+
+
+            <a
+                href="../index.html"
+                onclick="logoutManager()">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+
+            </a>
+
+        </div>
+
+
+        <!-- USER -->
+
+        <div class="sidebar-user">
+
+            <div
+                class="user-avatar"
+                id="sidebarAvatar">
+
+                MA
+
+            </div>
+
+
+            <div class="user-info">
+
+                <strong id="sidebarManagerName">
+                    Manager
+                </strong>
+
+                <span id="sidebarManagerDepartment">
+                    Select Department
+                </span>
+
+            </div>
+
+
+            <button class="user-menu">
+
+                <i class="fa-solid fa-ellipsis-vertical"></i>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN
+         ===================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+
+            <div class="topbar-left">
+
+
+                <button
+                    class="mobile-menu-btn"
+                    id="mobileMenuBtn">
+
+                    <i class="fa-solid fa-bars"></i>
+
+                </button>
+
+
+                <div class="page-title">
+
+                    <h1>
+                        Manager Dashboard
+                    </h1>
+
+                    <p>
+                        Manage your department and team
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <button class="notification">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                    <span
+                        class="notification-dot">
+                    </span>
+
+                </button>
+
+
+                <div
+                    class="user-avatar"
+                    id="topbarAvatar">
+
+                    MA
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =====================================================
+             CONTENT
+             ===================================================== -->
+
+        <section
+            class="content"
+            id="dashboard">
+
+
+            <!-- WELCOME -->
+
+            <div class="welcome-card">
+
+                <div>
+
+                    <span class="welcome-label">
+                        MANAGER PORTAL
+                    </span>
+
+
+                    <h2 id="welcomeHeading">
+                        Good Morning, Manager 👋
+                    </h2>
+
+
+                    <p>
+                        Select your department once.
+                        Your complete team data will load automatically.
+                    </p>
+
+                </div>
+
+
+                <div class="welcome-action">
+
+                    <button id="teamReportBtn">
+
+                        <i class="fa-solid fa-chart-column"></i>
+
+                        Team Report
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 DEPARTMENT
+                 ================================================= -->
+
+            <section
+                class="manager-department-card">
+
+
+                <div
+                    class="manager-department-header">
+
+
+                    <div
+                        class="manager-department-icon">
+
+                        <i class="fa-solid fa-building"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <h2>
+                            Your Department
+                        </h2>
+
+                        <p>
+                            Select your department.
+                            After saving, it will be locked.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="manager-department-body">
+
+
+                    <label
+                        for="managerDepartment">
+
+                        Department
+
+                    </label>
+
+
+                    <div
+                        class="department-select-row">
+
+
+                        <select
+                            id="managerDepartment">
+
+                            <option value="">
+                                Loading departments...
+                            </option>
+
+                        </select>
+
+
+                        <button
+                            type="button"
+                            id="saveManagerDepartment">
+
+                            <i class="fa-solid fa-check"></i>
+
+                            Save Department
+
+                        </button>
+
+
+                    </div>
+
+
+                    <div
+                        id="managerDepartmentMessage"
+                        class="manager-department-message">
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 STATS
+                 ================================================= -->
+
+            <div class="stats-grid">
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple">
+
+                        <i class="fa-solid fa-users"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            TEAM MEMBERS
+                        </span>
+
+                        <strong
+                            id="teamMembersCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue">
+
+                        <i class="fa-solid fa-user-check"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            PRESENT TODAY
+                        </span>
+
+                        <strong
+                            id="presentCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+
+                        <i class="fa-solid fa-calendar-check"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            ON LEAVE
+                        </span>
+
+                        <strong
+                            id="leaveCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">
+
+                        <i class="fa-solid fa-hourglass-half"></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            PENDING LEAVES
+                        </span>
+
+                        <strong
+                            id="pendingCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 MY TEAM
+                 ================================================= -->
+
+            <section
+                class="dashboard-section"
+                id="team">
+
+
+                <div class="dashboard-card">
+
+
+                    <div class="card-header">
+
+
+                        <div>
+
+                            <h2>
+                                My Team
+                            </h2>
+
+                            <p>
+                                Employees from your saved department
+                            </p>
+
+                        </div>
+
+
+                        <button
+                            class="refresh-btn"
+                            id="refreshTeamBtn">
+
+                            <i class="fa-solid fa-rotate"></i>
+
+                            Refresh
+
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        class="team-list"
+                        id="teamList">
+
+
+                        <div class="loading">
+
+                            <i class="fa-solid fa-spinner fa-spin"></i>
+
+                            Select a department to load your team.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 ATTENDANCE
+                 ================================================= -->
+
+            <section
+                class="dashboard-section"
+                id="attendance">
+
+
+                <div class="dashboard-card">
+
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h2>
+                                Team Attendance
+                            </h2>
+
+                            <p>
+                                Attendance records of your department
+                            </p>
+
+                        </div>
+
+
+                        <i class="fa-solid fa-clock"></i>
+
+                    </div>
+
+
+                    <div
+                        class="attendance-list"
+                        id="attendanceList">
+
+
+                        <div class="loading">
+
+                            Select a department to load attendance.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 LEAVES
+                 ================================================= -->
+
+            <section
+                class="dashboard-section"
+                id="leaves">
+
+
+                <div class="dashboard-card">
+
+
+                    <div class="card-header">
+
+
+                        <div>
+
+                            <h2>
+                                Leave Requests
+                            </h2>
+
+                            <p>
+                                Review leaves submitted by your employees
+                            </p>
+
+                        </div>
+
+
+                        <i class="fa-solid fa-calendar-check"></i>
+
+                    </div>
+
+
+                    <div
+                        class="leave-list"
+                        id="leaveList">
+
+
+                        <div class="loading">
+
+                            Select a department to load leave requests.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 EMPLOYEE DETAILS
+                 ================================================= -->
+
+            <section
+                class="dashboard-section"
+                id="details">
+
+
+                <div class="dashboard-card">
+
+
+                    <div class="card-header">
+
+
+                        <div>
+
+                            <h2>
+                                Employee Details
+                            </h2>
+
+                            <p>
+                                Attendance, leave, progress and recognition
+                                for every employee
+                            </p>
+
+                        </div>
+
+
+                        <i class="fa-solid fa-id-card"></i>
+
+                    </div>
+
+
+                    <div
+                        id="employeeDetailsList"
+                        class="employee-details-list">
+
+
+                        <div class="loading">
+
+                            Employee details will appear here.
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 PERFORMANCE
+                 ================================================= -->
+
+            <section
+                class="dashboard-section"
+                id="performance">
+
+
+                <div class="dashboard-card module-card">
+
+
+                    <div
+                        class="module-icon purple-module">
+
+                        <i class="fa-solid fa-bullseye"></i>
+
+                    </div>
+
+
+                    <h2>
+                        Team Performance
+                    </h2>
+
+
+                    <p>
+                        Employee performance information
+                        is loaded in Employee Details.
+                    </p>
+
+
+                    <a
+                        href="#details"
+                        class="module-btn">
+
+                        View Employee Performance
+
+                    </a>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 RECOGNITION
+                 ================================================= -->
+
+            <section
+                class="dashboard-section"
+                id="recognition">
+
+
+                <div class="dashboard-card module-card">
+
+
+                    <div
+                        class="module-icon orange-module">
+
+                        <i class="fa-solid fa-trophy"></i>
+
+                    </div>
+
+
+                    <h2>
+                        Recognition
+                    </h2>
+
+
+                    <p>
+                        Recognition and awards of department
+                        employees are shown in Employee Details.
+                    </p>
+
+
+                    <a
+                        href="#details"
+                        class="module-btn">
+
+                        View Recognition
+
+                    </a>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 PROGRESS
+                 ================================================= -->
+
+            <section
+                class="dashboard-section"
+                id="progress">
+
+
+                <div class="dashboard-card module-card">
+
+
+                    <div
+                        class="module-icon green-module">
+
+                        <i class="fa-solid fa-chart-line"></i>
+
+                    </div>
+
+
+                    <h2>
+                        Team Progress
+                    </h2>
+
+
+                    <p>
+                        Work and progress records of all
+                        department employees are shown here.
+                    </p>
+
+
+                    <a
+                        href="#details"
+                        class="module-btn">
+
+                        View Team Progress
+
+                    </a>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- MESSAGE -->
+
+            <div
+                id="dashboardMessage"
+                class="dashboard-message">
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+</div>
+
+
+
+<script src="manager.js"></script>
+
+
+</body>
+
+</html>

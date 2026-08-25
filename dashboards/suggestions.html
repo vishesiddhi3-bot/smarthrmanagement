@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SmartHR | Suggestions</title>
+
+    <link
+        rel="stylesheet"
+        href="suggestions.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+</head>
+
+
+<body>
+
+<div class="page">
+
+
+    <!-- ==========================================
+         HEADER
+    =========================================== -->
+
+    <header class="topbar">
+
+        <div>
+
+            <h1>
+                Employee Suggestions
+            </h1>
+
+            <p>
+                Share your ideas and help improve the workplace
+            </p>
+
+        </div>
+
+
+        <button
+            class="back-btn"
+            onclick="goBack()"
+        >
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Back to Dashboard
+
+        </button>
+
+    </header>
+
+
+
+    <!-- ==========================================
+         STATS
+    =========================================== -->
+
+    <section class="stats-grid">
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <i class="fa-solid fa-lightbulb"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    Total Suggestions
+                </span>
+
+                <strong id="totalSuggestions">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <i class="fa-solid fa-clock"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    Under Review
+                </span>
+
+                <strong id="reviewedSuggestions">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+
+                <i class="fa-solid fa-circle-check"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    Implemented
+                </span>
+
+                <strong id="implementedSuggestions">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ==========================================
+         SUBMIT SUGGESTION
+    =========================================== -->
+
+    <section class="card">
+
+        <div class="card-header">
+
+            <div>
+
+                <h2>
+                    Submit a Suggestion
+                </h2>
+
+                <p>
+                    Share an idea that can improve our workplace
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <form id="suggestionForm">
+
+
+            <div class="form-grid">
+
+
+                <div class="form-group">
+
+                    <label for="title">
+                        Suggestion Title
+                    </label>
+
+                    <input
+                        type="text"
+                        id="title"
+                        placeholder="Example: Improve Employee Parking"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        Submitted By
+                    </label>
+
+                    <input
+                        type="text"
+                        id="employeeName"
+                        value="Current Employee"
+                        readonly
+                    >
+
+                </div>
+
+
+
+                <div class="form-group full">
+
+                    <label for="description">
+                        Description
+                    </label>
+
+                    <textarea
+                        id="description"
+                        rows="6"
+                        placeholder="Describe your suggestion..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="form-actions">
+
+
+                <button
+                    type="reset"
+                    class="cancel-btn"
+                >
+
+                    Clear
+
+                </button>
+
+
+
+                <button
+                    type="submit"
+                    class="save-btn"
+                >
+
+                    <i class="fa-solid fa-paper-plane"></i>
+
+                    Submit Suggestion
+
+                </button>
+
+
+            </div>
+
+
+        </form>
+
+
+
+        <div id="formMessage"></div>
+
+
+    </section>
+
+
+
+    <!-- ==========================================
+         SUGGESTION RECORDS
+    =========================================== -->
+
+    <section class="card">
+
+
+        <div class="card-header">
+
+            <div>
+
+                <h2>
+                    Suggestion Records
+                </h2>
+
+                <p>
+                    Track submitted suggestions and their status
+                </p>
+
+            </div>
+
+
+
+            <button
+                class="refresh-btn"
+                onclick="loadSuggestions()"
+            >
+
+                <i class="fa-solid fa-rotate"></i>
+
+                Refresh
+
+            </button>
+
+        </div>
+
+
+
+        <div
+            id="suggestionList"
+            class="suggestion-list"
+        >
+
+            <div class="loading">
+
+                Loading suggestions...
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+</div>
+
+
+
+<script src="suggestions.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,2421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartHR | HR Dashboard</title>
+
+    <!-- Main Dashboard CSS -->
+    <link rel="stylesheet" href="../dashboard.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="dashboard">
+
+
+    <!-- =========================================
+         SIDEBAR
+    ========================================== -->
+
+    
+   <aside class="sidebar" id="sidebar">
+
+    <!-- LOGO -->
+    <div class="sidebar-logo">
+
+        <div class="logo-icon">
+            <i class="fa-solid fa-users"></i>
+        </div>
+
+        <div>
+            <div class="logo-text">
+                Smart<span>HR</span>
+            </div>
+
+            <small class="logo-subtitle">
+                INTELLIGENT HR MANAGEMENT
+            </small>
+        </div>
+
+    </div>
+
+
+    <!-- MENU -->
+    <div class="sidebar-menu">
+
+        <div class="menu-title">
+            MAIN MENU
+        </div>
+
+
+        <!-- DASHBOARD -->
+        <a href="hr.html"
+           data-page="dashboard"
+           class="active">
+
+            <i class="fa-solid fa-chart-pie"></i>
+
+            Dashboard
+
+        </a>
+
+
+        <!-- EMPLOYEES -->
+        <a href="employees.html"
+           data-page="employees">
+
+            <i class="fa-solid fa-users"></i>
+
+            Employees
+
+        </a>
+
+
+        <!-- ATTENDANCE -->
+        <a href="admin-attendance.html"
+           data-page="attendance">
+
+            <i class="fa-solid fa-clock"></i>
+
+            Attendance
+
+        </a>
+
+
+        <!-- LEAVE -->
+        <a href="leave-management.html"
+           data-page="leave">
+
+            <i class="fa-solid fa-calendar-check"></i>
+
+            Leave Management
+
+        </a>
+
+
+        <!-- PAYROLL -->
+        <a href="payroll.html"
+           data-page="payroll">
+
+            <i class="fa-solid fa-money-bill-wave"></i>
+
+            Payroll
+
+        </a>
+
+
+        <!-- PERFORMANCE -->
+<a href="performance.html">
+
+    <i class="fa-solid fa-chart-line"></i>
+
+    Performance
+
+</a>
+
+
+        <div class="sidebar-divider"></div>
+
+
+        <div class="menu-title">
+            SMART MODULES
+        </div>
+
+
+        <!-- GROWTH -->
+        <a href="growth.html"
+           data-page="growth">
+
+            <i class="fa-solid fa-arrow-trend-up"></i>
+
+            Growth Tracker
+
+        </a>
+
+
+        <!-- RECOGNITION -->
+        <a href="recognition.html"
+           data-page="recognition">
+
+            <i class="fa-solid fa-trophy"></i>
+
+            Recognition
+
+        </a>
+
+
+        <!-- SUGGESTIONS -->
+        <a href="suggestions.html"
+           data-page="suggestions">
+
+            <i class="fa-solid fa-lightbulb"></i>
+
+            Suggestions
+
+        </a>
+<a href="assign-task.html">
+    <i class="fa-solid fa-list-check"></i>
+    Assign Task
+</a>
+
+        <div class="sidebar-divider"></div>
+
+
+        <div class="menu-title">
+            SYSTEM
+        </div>
+
+
+        <!-- SETTINGS -->
+        <a href="settings.html"
+           data-page="settings">
+
+            <i class="fa-solid fa-gear"></i>
+
+            Settings
+
+        </a>
+
+
+        <!-- LOGOUT -->
+        <a href="../index.html"
+           id="logoutBtn">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            Logout
+
+        </a>
+
+    </div>
+
+
+    <!-- USER -->
+    <div class="sidebar-user">
+
+        <div class="user-avatar">
+            HR
+        </div>
+
+        <div class="user-info">
+
+            <strong id="sidebarUserName">
+                HR Manager
+            </strong>
+
+            <span>
+                Human Resources
+            </span>
+
+        </div>
+
+        <button class="user-menu">
+
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+
+        </button>
+
+    </div>
+
+</aside>
+
+    <!-- =========================================
+         MAIN CONTENT
+    ========================================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+
+            <div style="display:flex; align-items:center; gap:12px;">
+
+
+                <button
+                    class="mobile-menu-btn"
+                    id="mobileMenuBtn"
+                >
+
+                    <i class="fa-solid fa-bars"></i>
+
+                </button>
+
+
+                <div class="page-title">
+
+                    <h1>
+                        HR Dashboard
+                    </h1>
+
+                    <p>
+                        Overview of your organization's workforce
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="topbar-right">
+
+
+                <button class="notification">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+
+                <div class="user-avatar">
+                    HR
+                </div>
+
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- =========================================
+             CONTENT
+        ========================================== -->
+
+        <section class="content">
+
+
+            <!-- WELCOME -->
+
+            <div class="welcome-card">
+
+
+                <div>
+
+                    <h2 id="welcomeTitle">
+                        Good Morning, HR Manager 👋
+                    </h2>
+
+                    <p>
+                        Here's what's happening with your workforce today.
+                    </p>
+
+                </div>
+
+
+                <div class="welcome-action" class="quick-action"
+    onclick="window.location.href='employees.html'"
+>
+
+                    <button id="addEmployeeBtn">
+
+                        <i class="fa-solid fa-plus"></i>
+
+                        Add New Employee
+
+                    </button>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =====================================
+                 STAT CARDS
+            ====================================== -->
+
+            <div class="stats-grid">
+
+
+                <!-- EMPLOYEES -->
+
+                <div class="stat-card">
+
+
+                    <div class="stat-top">
+
+                        <div>
+
+                            <div class="stat-label">
+                                TOTAL EMPLOYEES
+                            </div>
+
+                            <div class="stat-number">
+                                500
+                            </div>
+
+                        </div>
+
+
+                        <div class="stat-icon green">
+
+                            <i class="fa-solid fa-users"></i>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-change up">
+
+                        <i class="fa-solid fa-arrow-up"></i>
+
+                        8.2% from last month
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- DEPARTMENTS -->
+
+                <div class="stat-card">
+
+
+                    <div class="stat-top">
+
+                        <div>
+
+                            <div class="stat-label">
+                                DEPARTMENTS
+                            </div>
+
+                            <div class="stat-number">
+                                12
+                            </div>
+
+                        </div>
+
+
+                        <div class="stat-icon blue">
+
+                            <i class="fa-solid fa-building"></i>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-change up">
+
+                        <i class="fa-solid fa-arrow-up"></i>
+
+                        2 new this year
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- LEAVE -->
+
+                <div class="stat-card">
+
+
+                    <div class="stat-top">
+
+                        <div>
+
+                            <div class="stat-label">
+                                ON LEAVE TODAY
+                            </div>
+
+                            <div class="stat-number">
+                                24
+                            </div>
+
+                        </div>
+
+
+                        <div class="stat-icon orange">
+
+                            <i class="fa-solid fa-calendar-day"></i>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-change">
+                        4.8% of workforce
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- ATTENDANCE -->
+
+                <div class="stat-card">
+
+
+                    <div class="stat-top">
+
+                        <div>
+
+                            <div class="stat-label">
+                                ATTENDANCE TODAY
+                            </div>
+
+                            <div class="stat-number">
+                                94.6%
+                            </div>
+
+                        </div>
+
+
+                        <div class="stat-icon purple">
+
+                            <i class="fa-solid fa-chart-simple"></i>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stat-change up">
+
+                        <i class="fa-solid fa-arrow-up"></i>
+
+                        1.4% from yesterday
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =====================================
+                 CHART + QUICK ACTIONS
+            ====================================== -->
+
+            <div class="dashboard-grid">
+
+
+              <!-- ATTENDANCE CHART -->
+
+<div class="panel">
+
+    <div class="panel-header">
+
+        <div>
+            <h3>Attendance Overview</h3>
+
+            <span id="attendanceChartSubtitle">
+                Last 7 working days
+            </span>
+        </div>
+
+        <button class="dashboard-btn light">
+            This Week
+            <i class="fa-solid fa-chevron-down"></i>
+        </button>
+
+    </div>
+
+
+    <div class="panel-body">
+
+        <div
+            class="chart"
+            id="attendanceChart"
+        ></div>
+
+
+        <div
+            class="chart-labels"
+            id="attendanceChartLabels"
+        ></div>
+
+    </div>
+
+</div>
+
+            <!-- LIVE LABELS WILL COME HERE -->
+
+        
+                <!-- QUICK ACTIONS -->
+
+                <div class="panel">
+
+
+                    <div class="panel-header">
+
+                        <h3>
+                            Quick Actions
+                        </h3>
+
+                        <span>
+                            Frequently used
+                        </span>
+
+                    </div>
+
+
+                    <div class="panel-body">
+
+
+                        <div class="quick-actions">
+
+
+                            <button class="quick-action"
+    onclick="window.location.href='employees.html'"
+>
+                                <i class="fa-solid fa-user-plus"></i>
+
+                                <span>
+                                    Add Employee
+                                </span>
+
+                            </button>
+
+
+                          <button
+    class="quick-action"
+    onclick="window.location.href='leave-management.html'"
+>
+
+    <i class="fa-solid fa-calendar-plus"></i>
+
+    <span>
+        Manage Leave
+    </span>
+
+</button>
+
+
+                            <button class="quick-action">
+
+                                <i class="fa-solid fa-file-invoice-dollar"></i>
+
+                                <span>
+                                    Payroll
+                                </span>
+
+                            </button>
+
+
+                          <button
+    class="quick-action"
+    onclick="window.location.href='announcements.html'; return false;"
+>
+    <i class="fa-solid fa-bullhorn"></i>
+
+    <span>
+        Announcement
+    </span>
+</button>
+
+
+                            <button  class="quick-action"
+    onclick="window.location.href='recognition.html'">
+
+                                <i class="fa-solid fa-trophy"></i>
+
+                                <span>
+                                    Recognition
+                                </span>
+
+                            </button>
+
+
+                            <button class="quick-action">
+
+                                <i class="fa-solid fa-chart-line"></i>
+
+                                <span>
+                                    Performance
+                                </span>
+
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =====================================
+                 RECENT EMPLOYEES
+            ====================================== -->
+
+            <div class="panel table-panel">
+
+
+                <div class="panel-header">
+
+
+                    <div>
+
+                        <h3>
+                            Recent Employees
+                        </h3>
+
+                        <span>
+                            Recently added employees
+                        </span>
+
+                    </div>
+
+
+                    <button class="dashboard-btn light">
+                        View All
+                    </button>
+
+
+                </div>
+
+
+                <div class="table-container">
+
+
+                    <table>
+
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    EMPLOYEE
+                                </th>
+
+                                <th>
+                                    DEPARTMENT
+                                </th>
+
+                                <th>
+                                    POSITION
+                                </th>
+
+                                <th>
+                                    JOINED
+                                </th>
+
+                                <th>
+                                    STATUS
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+
+                            <tr>
+
+
+                                <td>
+
+                                    <div class="employee-cell">
+
+
+                                        <div class="employee-avatar">
+                                            AS
+                                        </div>
+
+
+                                        <div class="employee-name">
+
+                                            <strong>
+                                                Aarav Sharma
+                                            </strong>
+
+                                            <span>
+                                                EMP-00124
+                                            </span>
+
+                                        </div>
+
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+                                    Technology
+                                </td>
+
+
+                                <td>
+                                    Software Developer
+                                </td>
+
+
+                                <td>
+                                    12 Aug 2026
+                                </td>
+
+
+                                <td>
+
+                                    <span class="status active">
+                                        Active
+                                    </span>
+
+                                </td>
+
+
+                            </tr>
+
+
+
+                            <tr>
+
+
+                                <td>
+
+                                    <div class="employee-cell">
+
+
+                                        <div class="employee-avatar">
+                                            PK
+                                        </div>
+
+
+                                        <div class="employee-name">
+
+                                            <strong>
+                                                Priya Kulkarni
+                                            </strong>
+
+                                            <span>
+                                                EMP-00123
+                                            </span>
+
+                                        </div>
+
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+                                    Marketing
+                                </td>
+
+
+                                <td>
+                                    Marketing Executive
+                                </td>
+
+
+                                <td>
+                                    10 Aug 2026
+                                </td>
+
+
+                                <td>
+
+                                    <span class="status active">
+                                        Active
+                                    </span>
+
+                                </td>
+
+
+                            </tr>
+
+
+
+                            <tr>
+
+
+                                <td>
+
+                                    <div class="employee-cell">
+
+
+                                        <div class="employee-avatar">
+                                            RM
+                                        </div>
+
+
+                                        <div class="employee-name">
+
+                                            <strong>
+                                                Rohan Mehta
+                                            </strong>
+
+                                            <span>
+                                                EMP-00122
+                                            </span>
+
+                                        </div>
+
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+                                    Finance
+                                </td>
+
+
+                                <td>
+                                    Financial Analyst
+                                </td>
+
+
+                                <td>
+                                    08 Aug 2026
+                                </td>
+
+
+                                <td>
+
+                                    <span class="status pending">
+                                        Probation
+                                    </span>
+
+                                </td>
+
+
+                            </tr>
+
+
+
+                            <tr>
+
+
+                                <td>
+
+                                    <div class="employee-cell">
+
+
+                                        <div class="employee-avatar">
+                                            NS
+                                        </div>
+
+
+                                        <div class="employee-name">
+
+                                            <strong>
+                                                Neha Singh
+                                            </strong>
+
+                                            <span>
+                                                EMP-00121
+                                            </span>
+
+                                        </div>
+
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+                                    Human Resources
+                                </td>
+
+
+                                <td>
+                                    HR Executive
+                                </td>
+
+
+                                <td>
+                                    05 Aug 2026
+                                </td>
+
+
+                                <td>
+
+                                    <span class="status active">
+                                        Active
+                                    </span>
+
+                                </td>
+
+
+                            </tr>
+
+
+                        </tbody>
+
+
+                    </table>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =====================================
+                 ACTIVITY + PERFORMANCE
+            ====================================== -->
+
+            <div class="dashboard-grid">
+
+
+                <!-- RECENT ACTIVITY -->
+
+                <div class="panel table-panel">
+
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h3>
+                                Recent Activity
+                            </h3>
+
+                            <span>
+                                Latest system activity
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="panel-body">
+
+
+                        <ul class="activity-list">
+
+
+                            <li class="activity-item">
+
+
+                                <div class="activity-icon">
+
+                                    <i class="fa-solid fa-user-plus"></i>
+
+                                </div>
+
+
+                                <div class="activity-text">
+
+                                    <strong>
+                                        New employee added
+                                    </strong>
+
+                                    <span>
+                                        Aarav Sharma was added to Technology
+                                        department.
+                                    </span>
+
+                                </div>
+
+
+                            </li>
+
+
+
+                            <li class="activity-item">
+
+
+                                <div class="activity-icon">
+
+                                    <i class="fa-solid fa-calendar-check"></i>
+
+                                </div>
+
+
+                                <div class="activity-text">
+
+                                    <strong>
+                                        Leave request approved
+                                    </strong>
+
+                                    <span>
+                                        Priya's leave request was approved.
+                                    </span>
+
+                                </div>
+
+
+                            </li>
+
+
+
+                            <li class="activity-item">
+
+
+                                <div class="activity-icon">
+
+                                    <i class="fa-solid fa-trophy"></i>
+
+                                </div>
+
+
+                                <div class="activity-text">
+
+                                    <strong>
+                                        Employee recognized
+                                    </strong>
+
+                                    <span>
+                                        Rohan received Employee of the Week.
+                                    </span>
+
+                                </div>
+
+
+                            </li>
+
+
+
+                            <li class="activity-item">
+
+
+                                <div class="activity-icon">
+
+                                    <i class="fa-solid fa-file-invoice-dollar"></i>
+
+                                </div>
+
+
+                                <div class="activity-text">
+
+                                    <strong>
+                                        Payroll processed
+                                    </strong>
+
+                                    <span>
+                                        Monthly payroll was successfully processed.
+                                    </span>
+
+                                </div>
+
+
+                            </li>
+
+
+                        </ul>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- DEPARTMENT PERFORMANCE -->
+
+                <div class="panel table-panel">
+
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h3>
+                                Department Performance
+                            </h3>
+
+                            <span>
+                                Current quarter
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="panel-body">
+
+
+                        <div class="progress-item">
+
+
+                            <div class="progress-header">
+
+                                <span>
+                                    Technology
+                                </span>
+
+                                <strong>
+                                    92%
+                                </strong>
+
+                            </div>
+
+
+                            <div class="progress-bar">
+
+                                <div
+                                    class="progress-fill"
+                                    style="width:92%;"
+                                ></div>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div class="progress-item">
+
+
+                            <div class="progress-header">
+
+                                <span>
+                                    Marketing
+                                </span>
+
+                                <strong>
+                                    86%
+                                </strong>
+
+                            </div>
+
+
+                            <div class="progress-bar">
+
+                                <div
+                                    class="progress-fill"
+                                    style="width:86%;"
+                                ></div>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div class="progress-item">
+
+
+                            <div class="progress-header">
+
+                                <span>
+                                    Finance
+                                </span>
+
+                                <strong>
+                                    81%
+                                </strong>
+
+                            </div>
+
+
+                            <div class="progress-bar">
+
+                                <div
+                                    class="progress-fill"
+                                    style="width:81%;"
+                                ></div>
+
+                            </div>
+
+
+                        </div>
+
+
+
+                        <div class="progress-item">
+
+
+                            <div class="progress-header">
+
+                                <span>
+                                    Operations
+                                </span>
+
+                                <strong>
+                                    76%
+                                </strong>
+
+                            </div>
+
+
+                            <div class="progress-bar">
+
+                                <div
+                                    class="progress-fill"
+                                    style="width:76%;"
+                                ></div>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================== -->
+
+<script>
+
+// ==========================================
+// SmartHR - HR DASHBOARD FRONTEND
+// ==========================================
+
+const API_URL = "http://localhost:5000/api";
+
+
+// ==========================================
+// DOM READY
+// ==========================================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    setupMobileMenu();
+
+    setupQuickActions();
+
+    loadDashboard();
+
+});
+
+
+// ==========================================
+// MOBILE MENU
+// ==========================================
+
+function setupMobileMenu() {
+
+    const mobileMenuBtn =
+        document.getElementById("mobileMenuBtn");
+
+    const sidebar =
+        document.getElementById("sidebar");
+
+
+    if (!mobileMenuBtn || !sidebar) {
+        return;
+    }
+
+
+    mobileMenuBtn.addEventListener(
+        "click",
+        () => {
+
+            sidebar.classList.toggle("open");
+
+        }
+    );
+
+}
+
+
+// ==========================================
+// LOAD DASHBOARD
+// ==========================================
+
+async function loadDashboard() {
+
+    try {
+
+        const response =
+            await fetch(
+                `${API_URL}/dashboard`
+            );
+
+
+        const data =
+            await response.json();
+
+
+        console.log(
+            "DASHBOARD RESPONSE:",
+            data
+        );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.message ||
+                "Unable to load dashboard"
+            );
+
+        }
+
+
+        if (!data.success) {
+
+            throw new Error(
+                data.message ||
+                "Dashboard data unavailable"
+            );
+
+        }
+
+
+        updateStatistics(
+            data.stats
+        );
+
+
+        renderRecentEmployees(
+            data.recentEmployees || []
+        );
+
+
+        renderDepartmentPerformance(
+            data.departmentPerformance || []
+        );
+renderAttendanceChart(
+    data.weeklyAttendance || []
+);
+
+        renderRecentActivity(
+            data.recentLeaves || [],
+            data.recentPayroll || []
+        );
+
+
+    }
+    
+    catch (error) {
+
+        console.error(
+            "DASHBOARD LOAD ERROR:",
+            error
+        );
+
+    }
+
+}
+
+
+// ==========================================
+// UPDATE STATISTICS
+// ==========================================
+
+function updateStatistics(stats) {
+
+    const statCards =
+        document.querySelectorAll(
+            ".stats-grid .stat-card"
+        );
+
+
+    if (statCards.length < 4) {
+        return;
+    }
+
+
+    // TOTAL EMPLOYEES
+
+    const employeeNumber =
+        statCards[0].querySelector(
+            ".stat-number"
+        );
+
+
+    if (employeeNumber) {
+
+        employeeNumber.textContent =
+            Number(
+                stats.totalEmployees || 0
+            ).toLocaleString("en-IN");
+
+    }
+
+
+    // DEPARTMENTS
+
+    const departmentNumber =
+        statCards[1].querySelector(
+            ".stat-number"
+        );
+
+
+    if (departmentNumber) {
+
+        departmentNumber.textContent =
+            Number(
+                stats.totalDepartments || 0
+            ).toLocaleString("en-IN");
+
+    }
+
+
+    // ON LEAVE TODAY
+
+    const leaveNumber =
+        statCards[2].querySelector(
+            ".stat-number"
+        );
+
+
+    if (leaveNumber) {
+
+        leaveNumber.textContent =
+            Number(
+                stats.onLeaveToday || 0
+            ).toLocaleString("en-IN");
+
+    }
+
+
+    // ATTENDANCE TODAY
+
+    const attendanceNumber =
+        statCards[3].querySelector(
+            ".stat-number"
+        );
+
+
+    if (attendanceNumber) {
+
+        attendanceNumber.textContent =
+            `${Number(
+                stats.attendanceToday || 0
+            ).toFixed(1)}%`;
+
+    }
+
+
+    // UPDATE SMALL TEXT
+
+    const leaveChange =
+        statCards[2].querySelector(
+            ".stat-change"
+        );
+
+
+    if (leaveChange) {
+
+        const total =
+            Number(
+                stats.totalEmployees || 0
+            );
+
+        const leave =
+            Number(
+                stats.onLeaveToday || 0
+            );
+
+
+        const percentage =
+            total > 0
+                ? ((leave / total) * 100).toFixed(1)
+                : 0;
+
+
+        leaveChange.textContent =
+            `${percentage}% of workforce`;
+
+    }
+
+
+    const attendanceChange =
+        statCards[3].querySelector(
+            ".stat-change"
+        );
+
+
+    if (attendanceChange) {
+
+        attendanceChange.innerHTML = `
+            ${Number(
+                stats.presentToday || 0
+            )} employees present today
+        `;
+
+    }
+
+}
+
+
+// ==========================================
+// RECENT EMPLOYEES
+// ==========================================
+
+function renderRecentEmployees(
+    employees
+) {
+
+    const table =
+        document.querySelector(
+            ".table-panel table"
+        );
+
+
+    if (!table) {
+        return;
+    }
+
+
+    const tbody =
+        table.querySelector("tbody");
+
+
+    if (!tbody) {
+        return;
+    }
+
+
+    if (!employees.length) {
+
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="5">
+                    No employees found.
+                </td>
+            </tr>
+        `;
+
+        return;
+
+    }
+
+
+    tbody.innerHTML =
+        employees.map(employee => {
+
+            const firstName =
+                employee.first_name || "";
+
+
+            const lastName =
+                employee.last_name || "";
+
+
+            const fullName =
+                `${firstName} ${lastName}`.trim();
+
+
+            const initials =
+                getInitials(
+                    firstName,
+                    lastName
+                );
+
+
+            return `
+
+                <tr>
+
+                    <td>
+
+                        <div class="employee-cell">
+
+                            <div class="employee-avatar">
+                                ${escapeHtml(initials)}
+                            </div>
+
+                            <div class="employee-name">
+
+                                <strong>
+                                    ${escapeHtml(
+                                        fullName ||
+                                        "Unknown Employee"
+                                    )}
+                                </strong>
+
+                                <span>
+                                    ${escapeHtml(
+                                        employee.employee_code ||
+                                        ""
+                                    )}
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+
+                    <td>
+                        ${escapeHtml(
+                            employee.department ||
+                            "-"
+                        )}
+                    </td>
+
+
+                    <td>
+                        ${escapeHtml(
+                            employee.designation ||
+                            "-"
+                        )}
+                    </td>
+
+
+                    <td>
+                        ${formatDate(
+                            employee.joining_date
+                        )}
+                    </td>
+
+
+                    <td>
+
+                        <span class="
+                            status
+                            ${
+                                String(
+                                    employee.status ||
+                                    ""
+                                ).toLowerCase() === "active"
+                                    ? "active"
+                                    : "pending"
+                            }
+                        ">
+
+                            ${escapeHtml(
+                                employee.status ||
+                                "Unknown"
+                            )}
+
+                        </span>
+
+                    </td>
+
+                </tr>
+
+            `;
+
+        }).join("");
+
+}
+
+// ==========================================
+// LIVE ATTENDANCE OVERVIEW
+// ==========================================
+
+function renderAttendanceChart(data) {
+
+    const chart =
+        document.getElementById("attendanceChart");
+
+    const labels =
+        document.getElementById("attendanceChartLabels");
+
+
+    if (!chart || !labels) {
+        console.error("Attendance chart elements not found");
+        return;
+    }
+
+
+    chart.innerHTML = "";
+    labels.innerHTML = "";
+
+
+    console.log("WEEKLY ATTENDANCE:", data);
+
+
+    if (!Array.isArray(data) || data.length === 0) {
+
+        chart.innerHTML = `
+            <div style="
+                width:100%;
+                height:100%;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                color:#64748b;
+            ">
+                No attendance data available
+            </div>
+        `;
+
+        return;
+    }
+
+
+    data.forEach(day => {
+
+        const percentage =
+            Number(day.percentage) || 0;
+
+
+        const bar =
+            document.createElement("div");
+
+
+        bar.className = "bar";
+
+
+        bar.style.height =
+            Math.max(
+                5,
+                Math.min(100, percentage)
+            ) + "%";
+
+
+        bar.title =
+            `${day.present || 0} employees present (${percentage}%)`;
+
+
+        chart.appendChild(bar);
+
+
+        const label =
+            document.createElement("span");
+
+
+        const rawDate =
+            String(day.date || "")
+                .substring(0, 10);
+
+
+        const date =
+            new Date(
+                rawDate + "T00:00:00"
+            );
+
+
+        label.textContent =
+            date.toLocaleDateString(
+                "en-IN",
+                {
+                    weekday: "short"
+                }
+            );
+
+
+        labels.appendChild(label);
+
+    });
+
+}
+// ==========================================
+// DEPARTMENT PERFORMANCE
+// ==========================================
+
+function renderDepartmentPerformance(
+    departments
+) {
+
+    const performancePanel =
+        findPanelByHeading(
+            "Department Performance"
+        );
+
+
+    if (!performancePanel) {
+        return;
+    }
+
+
+    const body =
+        performancePanel.querySelector(
+            ".panel-body"
+        );
+
+
+    if (!body) {
+        return;
+    }
+
+
+    if (!departments.length) {
+
+        body.innerHTML = `
+            <div style="
+                padding:20px;
+                text-align:center;
+                color:#64748b;
+            ">
+                No department data available.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    body.innerHTML =
+        departments.map(department => {
+
+            const performance =
+                Number(
+                    department.performance || 0
+                );
+
+
+            return `
+
+                <div class="progress-item">
+
+                    <div class="progress-header">
+
+                        <span>
+                            ${escapeHtml(
+                                department.department
+                            )}
+                        </span>
+
+                        <strong>
+                            ${performance}%
+                        </strong>
+
+                    </div>
+
+
+                    <div class="progress-bar">
+
+                        <div
+                            class="progress-fill"
+                            style="width:${Math.min(
+                                performance,
+                                100
+                            )}%"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }).join("");
+
+}
+
+
+// ==========================================
+// RECENT ACTIVITY
+// ==========================================
+
+function renderRecentActivity(
+    leaves,
+    payroll
+) {
+
+    const activityPanel =
+        findPanelByHeading(
+            "Recent Activity"
+        );
+
+
+    if (!activityPanel) {
+        return;
+    }
+
+
+    const body =
+        activityPanel.querySelector(
+            ".panel-body"
+        );
+
+
+    if (!body) {
+        return;
+    }
+
+
+    const activities = [];
+
+
+    // LEAVE ACTIVITY
+
+    leaves.forEach(leave => {
+
+        const name =
+            `${leave.first_name || ""} ${
+                leave.last_name || ""
+            }`.trim();
+
+
+        const status =
+            String(
+                leave.status || ""
+            ).toLowerCase();
+
+
+        let title =
+            "Leave request submitted";
+
+
+        if (status === "approved") {
+
+            title =
+                "Leave request approved";
+
+        }
+        else if (status === "rejected") {
+
+            title =
+                "Leave request rejected";
+
+        }
+
+
+        activities.push({
+
+            type: "leave",
+
+            title: title,
+
+            description:
+                `${name || "Employee"} submitted a leave request.`
+
+        });
+
+    });
+
+
+    // PAYROLL ACTIVITY
+
+    payroll.forEach(record => {
+
+        const name =
+            `${record.first_name || ""} ${
+                record.last_name || ""
+            }`.trim();
+
+
+        activities.push({
+
+            type: "payroll",
+
+            title: "Payroll record created",
+
+            description:
+                `Payroll processed for ${
+                    name || "employee"
+                }.`
+
+        });
+
+    });
+
+
+    if (!activities.length) {
+
+        body.innerHTML = `
+            <div style="
+                padding:20px;
+                text-align:center;
+                color:#64748b;
+            ">
+                No recent activity available.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    body.innerHTML = `
+
+        <ul class="activity-list">
+
+            ${
+                activities
+                    .slice(0, 5)
+                    .map(activity => {
+
+                        const icon =
+                            activity.type === "leave"
+                                ? "fa-calendar-check"
+                                : "fa-file-invoice-dollar";
+
+
+                        return `
+
+                            <li class="activity-item">
+
+                                <div class="activity-icon">
+
+                                    <i class="
+                                        fa-solid
+                                        ${icon}
+                                    "></i>
+
+                                </div>
+
+
+                                <div class="activity-text">
+
+                                    <strong>
+                                        ${escapeHtml(
+                                            activity.title
+                                        )}
+                                    </strong>
+
+                                    <span>
+                                        ${escapeHtml(
+                                            activity.description
+                                        )}
+                                    </span>
+
+                                </div>
+
+                            </li>
+
+                        `;
+
+                    }).join("")
+            }
+
+        </ul>
+
+    `;
+
+}
+
+
+// ==========================================
+// QUICK ACTIONS
+// ==========================================
+
+// ==========================================
+// QUICK ACTIONS
+// ==========================================
+
+function setupQuickActions() {
+
+    const buttons =
+        document.querySelectorAll(
+            ".quick-action"
+        );
+
+
+    buttons.forEach(button => {
+
+        const text =
+            button.innerText
+                .trim()
+                .toLowerCase();
+
+
+        button.addEventListener(
+            "click",
+            (event) => {
+
+                // ==================================
+                // ANNOUNCEMENT
+                // ==================================
+
+                if (
+                    text.includes("announcement")
+                ) {
+
+                    event.preventDefault();
+
+                    window.location.href =
+                        "announcements.html";
+
+                    return;
+
+                }
+
+
+                // ==================================
+                // RECOGNITION
+                // ==================================
+
+                if (
+                    text.includes("recognition")
+                ) {
+
+                    event.preventDefault();
+
+                    window.location.href =
+                        "recognition.html";
+
+                    return;
+
+                }
+
+
+                // ==================================
+                // PERFORMANCE
+                // ==================================
+
+                if (
+                    text.includes("performance")
+                ) {
+
+                    event.preventDefault();
+
+                    window.location.href =
+                        "performance.html";
+
+                    return;
+
+                }
+
+
+                // ==================================
+                // MANAGE LEAVE
+                // ==================================
+
+                if (
+                    text.includes("manage leave")
+                ) {
+
+                    event.preventDefault();
+
+                    window.location.href =
+                        "leave-management.html";
+
+                    return;
+
+                }
+
+
+                // ==================================
+                // PAYROLL
+                // ==================================
+
+                if (
+                    text.includes("payroll")
+                ) {
+
+                    event.preventDefault();
+
+                    window.location.href =
+                        "payroll.html";
+
+                    return;
+
+                }
+
+
+                // ==================================
+                // ADD EMPLOYEE
+                // ==================================
+
+                if (
+                    text.includes("add employee")
+                ) {
+
+                    event.preventDefault();
+
+                    const addEmployeeBtn =
+                        document.getElementById(
+                            "addEmployeeBtn"
+                        );
+
+
+                    if (addEmployeeBtn) {
+
+                        addEmployeeBtn.click();
+
+                    }
+
+                    return;
+
+                }
+
+            }
+        );
+
+    });
+
+}
+
+
+// ==========================================
+// FIND PANEL BY HEADING
+// ==========================================
+
+function findPanelByHeading(
+    heading
+) {
+
+    const panels =
+        document.querySelectorAll(
+            ".panel"
+        );
+
+
+    for (
+        const panel of panels
+    ) {
+
+        const h3 =
+            panel.querySelector("h3");
+
+
+        if (
+            h3 &&
+            h3.textContent.trim() === heading
+        ) {
+
+            return panel;
+
+        }
+
+    }
+
+
+    return null;
+
+}
+
+
+// ==========================================
+// DATE FORMAT
+// ==========================================
+
+function formatDate(
+    value
+) {
+
+    if (!value) {
+        return "-";
+    }
+
+
+    const date =
+        new Date(value);
+
+
+    if (Number.isNaN(date.getTime())) {
+        return value;
+    }
+
+
+    return date.toLocaleDateString(
+        "en-IN",
+        {
+            day: "2-digit",
+            month: "short",
+            year: "numeric"
+        }
+    );
+
+}
+
+
+// ==========================================
+// INITIALS
+// ==========================================
+
+function getInitials(
+    firstName,
+    lastName
+) {
+
+    const first =
+        String(firstName || "")
+            .trim()
+            .charAt(0);
+
+
+    const last =
+        String(lastName || "")
+            .trim()
+            .charAt(0);
+
+
+    return (
+        first +
+        last
+    ).toUpperCase() || "EM";
+
+}
+
+
+// ==========================================
+// HTML ESCAPE
+// ==========================================
+
+function escapeHtml(
+    value
+) {
+
+    return String(value ?? "")
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+</script>
+<script src="hr.js"></script>
+</body>
+
+</html>

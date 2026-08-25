@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SmartHR | Payroll</title>
+
+    <link rel="stylesheet" href="../dashboard.css">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <style>
+
+        .payroll-container {
+            display: grid;
+            gap: 24px;
+        }
+
+        .payroll-form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #2563eb;
+        }
+
+        .salary-summary {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .salary-box {
+            padding: 18px;
+            border-radius: 10px;
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+        }
+
+        .salary-box span {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: #6b7280;
+            margin-bottom: 7px;
+        }
+
+        .salary-box strong {
+            font-size: 22px;
+            color: #111827;
+        }
+
+        .gross-box {
+            background: #eff6ff;
+        }
+
+        .net-box {
+            background: #ecfdf5;
+        }
+
+        .deduction-box {
+            background: #fff7ed;
+        }
+
+        .create-payroll-btn {
+            margin-top: 20px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            background: #2563eb;
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .create-payroll-btn:hover {
+            opacity: 0.9;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        .payroll-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .payroll-table th,
+        .payroll-table td {
+            padding: 13px 12px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 13px;
+        }
+
+        .payroll-table th {
+            font-size: 12px;
+            color: #6b7280;
+            background: #f9fafb;
+        }
+
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .status-pending {
+            background: #fff7ed;
+            color: #c2410c;
+        }
+
+        .status-paid {
+            background: #ecfdf5;
+            color: #047857;
+        }
+
+        .action-btn {
+            border: none;
+            padding: 7px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-right: 4px;
+        }
+
+        .paid-btn {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .delete-btn {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .empty-message {
+            text-align: center;
+            padding: 30px;
+            color: #6b7280;
+        }
+
+        .message {
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 800px) {
+
+            .payroll-form {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .salary-summary {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="dashboard">
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-users"></i>
+            </div>
+
+            <div>
+
+                <div class="logo-text">
+                    Smart<span>HR</span>
+                </div>
+
+                <small class="logo-subtitle">
+                    INTELLIGENT HR MANAGEMENT
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="sidebar-menu">
+
+            <div class="menu-title">
+                MAIN MENU
+            </div>
+
+            <a href="hr.html">
+
+                <i class="fa-solid fa-chart-pie"></i>
+
+                Dashboard
+
+            </a>
+
+
+            <a href="#">
+
+                <i class="fa-solid fa-users"></i>
+
+                Employees
+
+            </a>
+
+
+            <a href="#">
+
+                <i class="fa-solid fa-clock"></i>
+
+                Attendance
+
+            </a>
+
+
+            <a href="leave-management.html">
+
+                <i class="fa-solid fa-calendar-check"></i>
+
+                Leave Management
+
+            </a>
+
+
+            <a href="payroll.html" class="active">
+
+                <i class="fa-solid fa-money-bill-wave"></i>
+
+                Payroll
+
+            </a>
+
+
+            <a href="#">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                Performance
+
+            </a>
+
+
+            <div class="sidebar-divider"></div>
+
+
+            <div class="menu-title">
+                SMART MODULES
+            </div>
+
+
+            <a href="#">
+
+                <i class="fa-solid fa-arrow-trend-up"></i>
+
+                Growth Tracker
+
+            </a>
+
+
+            <a href="#">
+
+                <i class="fa-solid fa-trophy"></i>
+
+                Recognition
+
+            </a>
+
+
+            <a href="#">
+
+                <i class="fa-solid fa-lightbulb"></i>
+
+                Suggestions
+
+            </a>
+
+
+            <div class="sidebar-divider"></div>
+
+
+            <div class="menu-title">
+                SYSTEM
+            </div>
+
+
+            <a href="#">
+
+                <i class="fa-solid fa-gear"></i>
+
+                Settings
+
+            </a>
+
+
+            <a href="../index.html">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Logout
+
+            </a>
+
+        </div>
+
+
+        <div class="sidebar-user">
+
+            <div class="user-avatar">
+                HR
+            </div>
+
+            <div class="user-info">
+
+                <strong>
+                    HR Manager
+                </strong>
+
+                <span>
+                    Human Resources
+                </span>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- MAIN -->
+
+    <main class="main-content">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div style="display:flex; align-items:center; gap:12px;">
+
+                <button
+                    class="mobile-menu-btn"
+                    id="mobileMenuBtn"
+                >
+
+                    <i class="fa-solid fa-bars"></i>
+
+                </button>
+
+
+                <div class="page-title">
+
+                    <h1>
+                        Payroll Management
+                    </h1>
+
+                    <p>
+                        Create and manage employee payroll
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <button class="notification">
+
+                    <i class="fa-regular fa-bell"></i>
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+                <div class="user-avatar">
+                    HR
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- CONTENT -->
+
+        <section class="content">
+
+            <div class="payroll-container">
+
+
+                <!-- CREATE PAYROLL -->
+
+                <div class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h3>
+                                Create Payroll
+                            </h3>
+
+                            <span>
+                                Generate monthly salary for an employee
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="panel-body">
+
+                        <form id="payrollForm">
+
+
+                            <div class="payroll-form">
+
+
+                                <!-- EMPLOYEE -->
+
+                                <div class="form-group">
+
+                                    <label>
+                                        Employee
+                                    </label>
+
+                                    <select
+                                        id="employeeId"
+                                        required
+                                    >
+
+                                        <option value="">
+                                            Select Employee
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- MONTH -->
+
+                                <div class="form-group">
+
+                                    <label>
+                                        Pay Month
+                                    </label>
+
+                                    <input
+                                        type="month"
+                                        id="payMonth"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <!-- BASIC -->
+
+                                <div class="form-group">
+
+                                    <label>
+                                        Basic Salary
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        id="basicSalary"
+                                        min="0"
+                                        step="0.01"
+                                        placeholder="Enter basic salary"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <!-- ALLOWANCES -->
+
+                                <div class="form-group">
+
+                                    <label>
+                                        Allowances
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        id="allowances"
+                                        min="0"
+                                        step="0.01"
+                                        value="0"
+                                    >
+
+                                </div>
+
+
+                                <!-- DEDUCTIONS -->
+
+                                <div class="form-group">
+
+                                    <label>
+                                        Deductions
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        id="deductions"
+                                        min="0"
+                                        step="0.01"
+                                        value="0"
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- SALARY SUMMARY -->
+
+                            <div class="salary-summary">
+
+
+                                <div class="salary-box gross-box">
+
+                                    <span>
+                                        GROSS SALARY
+                                    </span>
+
+                                    <strong id="grossSalary">
+                                        ₹0.00
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="salary-box deduction-box">
+
+                                    <span>
+                                        DEDUCTIONS
+                                    </span>
+
+                                    <strong id="deductionDisplay">
+                                        ₹0.00
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="salary-box net-box">
+
+                                    <span>
+                                        NET SALARY
+                                    </span>
+
+                                    <strong id="netSalary">
+                                        ₹0.00
+                                    </strong>
+
+                                </div>
+
+
+                            </div>
+
+
+                            <button
+                                type="submit"
+                                class="create-payroll-btn"
+                            >
+
+                                <i class="fa-solid fa-plus"></i>
+
+                                Create Payroll
+
+                            </button>
+
+
+                            <div
+                                id="formMessage"
+                                class="message"
+                            ></div>
+
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PAYROLL RECORDS -->
+
+                <div class="panel table-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h3>
+                                Payroll Records
+                            </h3>
+
+                            <span>
+                                All employee payroll records
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="table-container">
+
+                        <table class="payroll-table">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        EMPLOYEE
+                                    </th>
+
+                                    <th>
+                                        MONTH
+                                    </th>
+
+                                    <th>
+                                        BASIC
+                                    </th>
+
+                                    <th>
+                                        ALLOWANCES
+                                    </th>
+
+                                    <th>
+                                        DEDUCTIONS
+                                    </th>
+
+                                    <th>
+                                        GROSS
+                                    </th>
+
+                                    <th>
+                                        NET
+                                    </th>
+
+                                    <th>
+                                        STATUS
+                                    </th>
+
+                                    <th>
+                                        ACTION
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="payrollTableBody">
+
+                                <tr>
+
+                                    <td
+                                        colspan="9"
+                                        class="empty-message"
+                                    >
+
+                                        Loading payroll records...
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+
+<script src="payroll.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>SmartHR | Audit Logs</title>
+
+
+    <link rel="stylesheet" href="../dashboard.css">
+
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="dashboard">
+
+
+    <!-- =========================================
+         SIDEBAR
+    ========================================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+
+        <div class="sidebar-logo">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-users"></i>
+            </div>
+
+            <div>
+
+                <div class="logo-text">
+                    Smart<span>HR</span>
+                </div>
+
+                <small class="logo-subtitle">
+                    INTELLIGENT HR MANAGEMENT
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <div class="sidebar-menu">
+
+
+            <div class="menu-title">
+                MAIN MENU
+            </div>
+
+
+            <a href="hr.html">
+
+                <i class="fa-solid fa-chart-pie"></i>
+
+                Dashboard
+
+            </a>
+
+
+            <a href="employees.html">
+
+                <i class="fa-solid fa-users"></i>
+
+                Employees
+
+            </a>
+
+
+            <a href="admin-attendance.html">
+
+                <i class="fa-solid fa-clock"></i>
+
+                Attendance
+
+            </a>
+
+
+            <a href="leave-management.html">
+
+                <i class="fa-solid fa-calendar-check"></i>
+
+                Leave Management
+
+            </a>
+
+
+            <a href="payroll.html">
+
+                <i class="fa-solid fa-money-bill-wave"></i>
+
+                Payroll
+
+            </a>
+
+
+            <a href="performance.html">
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                Performance
+
+            </a>
+
+
+            <div class="sidebar-divider"></div>
+
+
+            <div class="menu-title">
+                SMART MODULES
+            </div>
+
+
+            <a href="growth.html">
+
+                <i class="fa-solid fa-arrow-trend-up"></i>
+
+                Growth Tracker
+
+            </a>
+
+
+            <a href="recognition.html">
+
+                <i class="fa-solid fa-trophy"></i>
+
+                Recognition
+
+            </a>
+
+
+            <a href="suggestions.html">
+
+                <i class="fa-solid fa-lightbulb"></i>
+
+                Suggestions
+
+            </a>
+
+
+            <a href="assign-task.html">
+
+                <i class="fa-solid fa-list-check"></i>
+
+                Assign Task
+
+            </a>
+
+
+            <div class="sidebar-divider"></div>
+
+
+            <div class="menu-title">
+                SYSTEM
+            </div>
+
+
+            <a href="audit-logs.html" class="active">
+
+                <i class="fa-solid fa-clock-rotate-left"></i>
+
+                Audit Logs
+
+            </a>
+
+
+            <a href="settings.html">
+
+                <i class="fa-solid fa-gear"></i>
+
+                Settings
+
+            </a>
+
+
+            <a href="../index.html">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Logout
+
+            </a>
+
+
+        </div>
+
+
+        <div class="sidebar-user">
+
+            <div class="user-avatar">
+                HR
+            </div>
+
+            <div class="user-info">
+
+                <strong>
+                    HR Manager
+                </strong>
+
+                <span>
+                    Human Resources
+                </span>
+
+            </div>
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =========================================
+         MAIN CONTENT
+    ========================================== -->
+
+    <main class="main-content">
+
+
+        <header class="topbar">
+
+
+            <div
+                style="
+                    display:flex;
+                    align-items:center;
+                    gap:12px;
+                "
+            >
+
+                <button
+                    class="mobile-menu-btn"
+                    id="mobileMenuBtn"
+                >
+
+                    <i class="fa-solid fa-bars"></i>
+
+                </button>
+
+
+                <div class="page-title">
+
+                    <h1>
+                        Audit Logs
+                    </h1>
+
+                    <p>
+                        Track important activities across SmartHR
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </header>
+
+
+
+        <section class="content">
+
+
+            <!-- =====================================
+                 HEADER
+            ====================================== -->
+
+            <div class="welcome-card">
+
+                <div>
+
+                    <h2>
+                        System Activity
+                    </h2>
+
+                    <p>
+                        Monitor actions performed by HR and administrators.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =====================================
+                 AUDIT LOG TABLE
+            ====================================== -->
+
+            <div class="panel table-panel">
+
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h3>
+                            Audit History
+                        </h3>
+
+                        <span>
+                            Latest system activities
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        class="dashboard-btn light"
+                        onclick="loadAuditLogs()"
+                    >
+
+                        <i class="fa-solid fa-rotate"></i>
+
+                        Refresh
+
+                    </button>
+
+                </div>
+
+
+
+                <div class="table-container">
+
+                    <table>
+
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    DATE & TIME
+                                </th>
+
+                                <th>
+                                    USER
+                                </th>
+
+                                <th>
+                                    ROLE
+                                </th>
+
+                                <th>
+                                    ACTION
+                                </th>
+
+                                <th>
+                                    MODULE
+                                </th>
+
+                                <th>
+                                    DESCRIPTION
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="auditLogsBody">
+
+                            <tr>
+
+                                <td
+                                    colspan="6"
+                                    style="text-align:center;"
+                                >
+
+                                    Loading audit logs...
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+
+                    </table>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+
+<script>
+
+
+// ==========================================
+// SmartHR - AUDIT LOGS FRONTEND
+// ==========================================
+
+const API_URL =
+    "http://localhost:5000/api";
+
+
+// ==========================================
+// DOM READY
+// ==========================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        setupMobileMenu();
+
+        loadAuditLogs();
+
+    }
+);
+
+
+// ==========================================
+// MOBILE MENU
+// ==========================================
+
+function setupMobileMenu() {
+
+    const button =
+        document.getElementById(
+            "mobileMenuBtn"
+        );
+
+
+    const sidebar =
+        document.getElementById(
+            "sidebar"
+        );
+
+
+    if (!button || !sidebar) {
+        return;
+    }
+
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            sidebar.classList.toggle(
+                "open"
+            );
+
+        }
+    );
+
+}
+
+
+// ==========================================
+// LOAD AUDIT LOGS
+// ==========================================
+
+async function loadAuditLogs() {
+
+    const tbody =
+        document.getElementById(
+            "auditLogsBody"
+        );
+
+
+    if (!tbody) {
+        return;
+    }
+
+
+    tbody.innerHTML = `
+
+        <tr>
+
+            <td
+                colspan="6"
+                style="text-align:center;"
+            >
+
+                Loading audit logs...
+
+            </td>
+
+        </tr>
+
+    `;
+
+
+    try {
+
+        const response =
+            await fetch(
+                `${API_URL}/audit-logs`
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok || !data.success) {
+
+            throw new Error(
+                data.message ||
+                "Unable to load audit logs"
+            );
+
+        }
+
+
+        const logs =
+            data.logs || [];
+
+
+        if (!logs.length) {
+
+            tbody.innerHTML = `
+
+                <tr>
+
+                    <td
+                        colspan="6"
+                        style="
+                            text-align:center;
+                            padding:30px;
+                        "
+                    >
+
+                        No audit logs available.
+
+                    </td>
+
+                </tr>
+
+            `;
+
+            return;
+
+        }
+
+
+        tbody.innerHTML =
+            logs.map(
+                log => {
+
+                    return `
+
+                        <tr>
+
+                            <td>
+                                ${formatDateTime(
+                                    log.created_at
+                                )}
+                            </td>
+
+
+                            <td>
+
+                                <strong>
+                                    ${escapeHtml(
+                                        log.user_name ||
+                                        "System"
+                                    )}
+                                </strong>
+
+                            </td>
+
+
+                            <td>
+                                ${escapeHtml(
+                                    log.user_role ||
+                                    "-"
+                                )}
+                            </td>
+
+
+                            <td>
+
+                                <span class="
+                                    status
+                                    ${getActionClass(
+                                        log.action
+                                    )}
+                                ">
+
+                                    ${escapeHtml(
+                                        log.action ||
+                                        "-"
+                                    )}
+
+                                </span>
+
+                            </td>
+
+
+                            <td>
+                                ${escapeHtml(
+                                    log.module ||
+                                    "-"
+                                )}
+                            </td>
+
+
+                            <td>
+                                ${escapeHtml(
+                                    log.description ||
+                                    "-"
+                                )}
+                            </td>
+
+                        </tr>
+
+                    `;
+
+                }
+            ).join("");
+
+
+    }
+    catch (error) {
+
+        console.error(
+            "AUDIT LOG LOAD ERROR:",
+            error
+        );
+
+
+        tbody.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="6"
+                    style="
+                        text-align:center;
+                        padding:30px;
+                        color:#dc2626;
+                    "
+                >
+
+                    Unable to load audit logs.
+
+                </td>
+
+            </tr>
+
+        `;
+
+    }
+
+}
+
+
+// ==========================================
+// ACTION CLASS
+// ==========================================
+
+function getActionClass(action) {
+
+    const value =
+        String(action || "")
+            .toLowerCase();
+
+
+    if (
+        value.includes("delete") ||
+        value.includes("reject")
+    ) {
+
+        return "pending";
+
+    }
+
+
+    return "active";
+
+}
+
+
+// ==========================================
+// DATE FORMAT
+// ==========================================
+
+function formatDateTime(value) {
+
+    if (!value) {
+        return "-";
+    }
+
+
+    const date =
+        new Date(value);
+
+
+    if (
+        Number.isNaN(
+            date.getTime()
+        )
+    ) {
+
+        return value;
+
+    }
+
+
+    return date.toLocaleString(
+        "en-IN",
+        {
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit"
+        }
+    );
+
+}
+
+
+// ==========================================
+// HTML ESCAPE
+// ==========================================
+
+function escapeHtml(value) {
+
+    return String(
+        value ?? ""
+    )
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+</script>
+
+
+</body>
+
+</html>

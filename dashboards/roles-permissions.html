@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartHR | Roles & Permissions</title>
+
+    <link rel="stylesheet" href="../dashboard.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        .rp-container {
+            padding: 25px;
+        }
+
+        .rp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .rp-header h2 {
+            margin: 0;
+        }
+
+        .rp-header p {
+            margin-top: 5px;
+            color: #6b7280;
+        }
+
+        .rp-card {
+            background: #fff;
+            border-radius: 14px;
+            padding: 22px;
+            margin-bottom: 22px;
+            box-shadow: 0 5px 20px rgba(0,0,0,.06);
+        }
+
+        .role-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+
+        .role-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+            transition: .2s;
+        }
+
+        .role-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 18px rgba(0,0,0,.08);
+        }
+
+        .role-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #eef2ff;
+            color: #4f46e5;
+            margin-bottom: 12px;
+        }
+
+        .role-card h3 {
+            margin: 0 0 7px;
+        }
+
+        .role-card p {
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .permission-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .permission-table th,
+        .permission-table td {
+            padding: 14px;
+            border-bottom: 1px solid #e5e7eb;
+            text-align: left;
+        }
+
+        .permission-table th {
+            background: #f9fafb;
+        }
+
+        .permission-table input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .save-btn {
+            margin-top: 20px;
+            border: none;
+            background: #4f46e5;
+            color: white;
+            padding: 11px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .save-btn:hover {
+            opacity: .9;
+        }
+
+        .message {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            display: none;
+            background: #ecfdf5;
+            color: #047857;
+        }
+
+        @media(max-width:700px) {
+            .permission-table {
+                font-size: 13px;
+            }
+
+            .permission-table th,
+            .permission-table td {
+                padding: 9px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <aside class="sidebar">
+
+        <div class="sidebar-logo">
+            <div class="logo-icon">
+                <i class="fa-solid fa-users"></i>
+            </div>
+
+            <div>
+                <div class="logo-text">
+                    Smart<span>HR</span>
+                </div>
+
+                <small class="logo-subtitle">
+                    INTELLIGENT HR MANAGEMENT
+                </small>
+            </div>
+        </div>
+
+        <div class="sidebar-menu">
+
+            <div class="menu-title">ADMIN MENU</div>
+
+            <a href="admin.html">
+                <i class="fa-solid fa-chart-pie"></i>
+                Dashboard
+            </a>
+
+            <a href="users.html">
+                <i class="fa-solid fa-users"></i>
+                User Management
+            </a>
+
+            <a href="departments.html">
+                <i class="fa-solid fa-building"></i>
+                Departments
+            </a>
+
+            <a href="roles-permissions.html" class="active">
+                <i class="fa-solid fa-user-shield"></i>
+                Roles & Permissions
+            </a>
+
+            <div class="sidebar-divider"></div>
+
+            <div class="menu-title">SYSTEM</div>
+
+            <a href="reports.html">
+                <i class="fa-solid fa-chart-column"></i>
+                System Reports
+            </a>
+
+            <a href="database.html">
+                <i class="fa-solid fa-database"></i>
+                Database
+            </a>
+
+            <a href="settings.html">
+                <i class="fa-solid fa-gear"></i>
+                Settings
+            </a>
+
+            <div class="sidebar-divider"></div>
+
+            <a href="../index.html">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </a>
+
+        </div>
+
+        <div class="sidebar-user">
+            <div class="user-avatar">AD</div>
+
+            <div class="user-info">
+                <strong>System Admin</strong>
+                <span>Administrator</span>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div class="page-title">
+                <h1>Roles & Permissions</h1>
+                <p>Manage system roles and access permissions</p>
+            </div>
+
+            <div class="topbar-right">
+                <div class="user-avatar">AD</div>
+            </div>
+
+        </header>
+
+
+        <section class="content">
+
+            <div class="rp-container">
+
+                <div class="rp-header">
+                    <div>
+                        <h2>System Roles</h2>
+                        <p>Available roles in SmartHR</p>
+                    </div>
+                </div>
+
+
+                <div class="role-grid">
+
+                    <div class="role-card">
+                        <div class="role-icon">
+                            <i class="fa-solid fa-user-shield"></i>
+                        </div>
+
+                        <h3>Administrator</h3>
+
+                        <p>
+                            Full access to the SmartHR system.
+                        </p>
+
+                        <strong>Full Access</strong>
+                    </div>
+
+
+                    <div class="role-card">
+                        <div class="role-icon">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+
+                        <h3>HR Manager</h3>
+
+                        <p>
+                            Manage employees, leaves and HR operations.
+                        </p>
+
+                        <strong>HR Access</strong>
+                    </div>
+
+
+                    <div class="role-card">
+                        <div class="role-icon">
+                            <i class="fa-solid fa-people-group"></i>
+                        </div>
+
+                        <h3>Manager</h3>
+
+                        <p>
+                            Manage team members and approvals.
+                        </p>
+
+                        <strong>Team Access</strong>
+                    </div>
+
+
+                    <div class="role-card">
+                        <div class="role-icon">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+
+                        <h3>Employee</h3>
+
+                        <p>
+                            Access personal employee features.
+                        </p>
+
+                        <strong>Employee Access</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="rp-card">
+
+                    <h2>Permission Matrix</h2>
+
+                    <p style="color:#6b7280;margin-bottom:20px;">
+                        Configure permissions for each role.
+                    </p>
+
+
+                    <table class="permission-table">
+
+                        <thead>
+                            <tr>
+                                <th>Permission</th>
+                                <th>Admin</th>
+                                <th>HR</th>
+                                <th>Manager</th>
+                                <th>Employee</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <td>Manage Users</td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+
+                            <tr>
+                                <td>Manage Employees</td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+
+                            <tr>
+                                <td>Manage Departments</td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+
+                            <tr>
+                                <td>Approve Leaves</td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+
+                            <tr>
+                                <td>View Reports</td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+
+                            <tr>
+                                <td>System Settings</td>
+                                <td><input type="checkbox" checked></td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox"></td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                    <button class="save-btn" onclick="savePermissions()">
+                        <i class="fa-solid fa-save"></i>
+                        Save Permissions
+                    </button>
+
+                    <div id="message" class="message">
+                        Permissions saved successfully.
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script>
+
+function savePermissions() {
+
+    const permissions = [];
+
+    document
+        .querySelectorAll(".permission-table tbody tr")
+        .forEach(row => {
+
+            const permission =
+                row.children[0].innerText.trim();
+
+            const checks =
+                [...row.querySelectorAll("input")]
+                .map(input => input.checked);
+
+            permissions.push({
+                permission,
+                admin: checks[0],
+                hr: checks[1],
+                manager: checks[2],
+                employee: checks[3]
+            });
+
+        });
+
+    localStorage.setItem(
+        "smarthr_permissions",
+        JSON.stringify(permissions)
+    );
+
+    document.getElementById("message").style.display = "block";
+
+    setTimeout(() => {
+        document.getElementById("message").style.display = "none";
+    }, 2500);
+}
+
+
+function loadPermissions() {
+
+    const saved =
+        localStorage.getItem("smarthr_permissions");
+
+    if (!saved) return;
+
+    const permissions = JSON.parse(saved);
+
+    const rows =
+        document.querySelectorAll(".permission-table tbody tr");
+
+    permissions.forEach((item, index) => {
+
+        if (!rows[index]) return;
+
+        const inputs =
+            rows[index].querySelectorAll("input");
+
+        inputs[0].checked = item.admin;
+        inputs[1].checked = item.hr;
+        inputs[2].checked = item.manager;
+        inputs[3].checked = item.employee;
+
+    });
+}
+
+loadPermissions();
+
+</script>
+
+</body>
+</html>

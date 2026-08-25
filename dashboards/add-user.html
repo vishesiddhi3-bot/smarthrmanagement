@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>SmartHR | Add User</title>
+
+    <link rel="stylesheet" href="users.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<!-- ==========================================
+     SIDEBAR
+========================================== -->
+
+<aside class="sidebar">
+
+    <div class="sidebar-brand">
+
+        <i class="fa-solid fa-users"></i>
+
+        <div>
+            <strong>SmartHR</strong>
+
+            <small>
+                Admin Panel
+            </small>
+        </div>
+
+    </div>
+
+
+    <nav>
+
+        <a href="admin.html">
+
+            <i class="fa-solid fa-chart-line"></i>
+
+            Dashboard
+
+        </a>
+
+
+        <a href="users.html">
+
+            <i class="fa-solid fa-users"></i>
+
+            User Management
+
+        </a>
+
+
+        <a href="employees.html">
+
+            <i class="fa-solid fa-user-group"></i>
+
+            Employees
+
+        </a>
+
+
+        <a href="departments.html">
+
+            <i class="fa-solid fa-building"></i>
+
+            Departments
+
+        </a>
+
+
+        <a href="#"
+           onclick="comingSoon('Attendance'); return false;">
+
+            <i class="fa-solid fa-calendar-check"></i>
+
+            Attendance
+
+        </a>
+
+
+        <a href="#"
+           onclick="comingSoon('Leave'); return false;">
+
+            <i class="fa-solid fa-plane-departure"></i>
+
+            Leave
+
+        </a>
+
+
+        <a href="#"
+           onclick="comingSoon('Payroll'); return false;">
+
+            <i class="fa-solid fa-wallet"></i>
+
+            Payroll
+
+        </a>
+
+
+        <a href="#"
+           onclick="comingSoon('Reports'); return false;">
+
+            <i class="fa-solid fa-chart-simple"></i>
+
+            Reports
+
+        </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <a href="#"
+           onclick="comingSoon('Settings'); return false;">
+
+            <i class="fa-solid fa-gear"></i>
+
+            Settings
+
+        </a>
+
+
+        <a href="../index.html">
+
+            <i class="fa-solid fa-right-from-bracket"></i>
+
+            Logout
+
+        </a>
+
+    </div>
+
+</aside>
+
+
+
+<!-- ==========================================
+     MAIN
+========================================== -->
+
+<main class="dashboard-main">
+
+
+    <!-- HEADER -->
+
+    <header class="dashboard-header">
+
+        <div>
+
+            <h1>
+                Add New User
+            </h1>
+
+            <p>
+                Create a new SmartHR system account.
+            </p>
+
+        </div>
+
+
+        <div class="admin-profile">
+
+            <div class="profile-icon">
+
+                <i class="fa-solid fa-user-shield"></i>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    Admin
+                </strong>
+
+                <span>
+                    Administrator
+                </span>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ==========================================
+         FORM CARD
+    ========================================== -->
+
+    <section class="user-section add-user-section">
+
+
+        <div class="section-top">
+
+            <div>
+
+                <h2>
+                    User Information
+                </h2>
+
+                <p>
+                    Enter the details below to create the account.
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="back-btn"
+                onclick="window.location.href='users.html'">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Back to Users
+
+            </button>
+
+        </div>
+
+
+
+        <!-- ==========================================
+             FORM
+        ========================================== -->
+
+        <form id="addUserForm">
+
+
+            <!-- USERNAME -->
+
+            <div class="form-grid">
+
+
+                <div class="form-group">
+
+                    <label for="username">
+
+                        Username
+                        <span>*</span>
+
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-user"></i>
+
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            placeholder="Enter username"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="email">
+
+                        Email
+                        <span>*</span>
+
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter email address"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PASSWORD -->
+
+                <div class="form-group">
+
+                    <label for="password">
+
+                        Password
+                        <span>*</span>
+
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter password"
+                            required>
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            id="togglePassword">
+
+                            <i class="fa-solid fa-eye"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ROLE -->
+
+                <div class="form-group">
+
+                    <label for="role">
+
+                        Role
+                        <span>*</span>
+
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-user-tag"></i>
+
+                        <select
+                            id="role"
+                            name="role"
+                            required>
+
+                            <option value="">
+                                Select Role
+                            </option>
+
+                            <option value="admin">
+                                Admin
+                            </option>
+
+                            <option value="hr">
+                                HR Manager
+                            </option>
+
+                            <option value="manager">
+                                Manager
+                            </option>
+
+                            <option value="employee">
+                                Employee
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- STATUS -->
+
+                <div class="form-group">
+
+                    <label for="status">
+
+                        Account Status
+
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        <select
+                            id="status"
+                            name="status">
+
+                            <option value="active">
+                                Active
+                            </option>
+
+                            <option value="inactive">
+                                Inactive
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- MESSAGE -->
+
+            <div
+                id="formMessage"
+                class="form-message">
+            </div>
+
+
+
+            <!-- ACTIONS -->
+
+            <div class="form-actions">
+
+
+                <button
+                    type="button"
+                    class="cancel-btn"
+                    onclick="window.location.href='users.html'">
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                    Cancel
+
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="save-btn"
+                    id="saveUserBtn">
+
+                    <i class="fa-solid fa-user-plus"></i>
+
+                    Create User
+
+                </button>
+
+
+            </div>
+
+
+        </form>
+
+    </section>
+
+
+</main>
+
+
+
+<script>
+
+const API_URL = "http://localhost:5000/api/users";
+
+
+// ==========================================
+// FORM SUBMIT
+// ==========================================
+
+document
+    .getElementById("addUserForm")
+    .addEventListener("submit", async function(event) {
+
+        event.preventDefault();
+
+
+        const username =
+            document.getElementById("username").value.trim();
+
+        const email =
+            document.getElementById("email").value.trim();
+
+        const password =
+            document.getElementById("password").value;
+
+        const role =
+            document.getElementById("role").value;
+
+        const status =
+            document.getElementById("status").value;
+
+
+        const message =
+            document.getElementById("formMessage");
+
+        const button =
+            document.getElementById("saveUserBtn");
+
+
+        message.className = "form-message";
+        message.textContent = "";
+
+
+        if (!username || !email || !password || !role) {
+
+            showMessage(
+                "Please fill all required fields.",
+                "error"
+            );
+
+            return;
+
+        }
+
+
+        button.disabled = true;
+
+        button.innerHTML =
+            '<i class="fa-solid fa-spinner fa-spin"></i> Creating...';
+
+
+        try {
+
+            const response =
+                await fetch(API_URL, {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        username: username,
+                        email: email,
+                        password: password,
+                        role: role,
+                        status: status
+
+                    })
+
+                });
+
+
+            const data =
+                await response.json();
+
+
+            if (!response.ok || !data.success) {
+
+                throw new Error(
+                    data.message ||
+                    "Unable to create user"
+                );
+
+            }
+
+
+            showMessage(
+                "User created successfully!",
+                "success"
+            );
+
+
+            document
+                .getElementById("addUserForm")
+                .reset();
+
+
+            setTimeout(function() {
+
+                window.location.href =
+                    "users.html";
+
+            }, 1000);
+
+
+        }
+        catch(error) {
+
+            console.error(
+                "ADD USER ERROR:",
+                error
+            );
+
+
+            showMessage(
+                error.message ||
+                "Something went wrong.",
+                "error"
+            );
+
+
+            button.disabled = false;
+
+            button.innerHTML =
+                '<i class="fa-solid fa-user-plus"></i> Create User';
+
+        }
+
+    });
+
+
+
+// ==========================================
+// SHOW MESSAGE
+// ==========================================
+
+function showMessage(text, type) {
+
+    const message =
+        document.getElementById("formMessage");
+
+
+    message.textContent = text;
+
+    message.className =
+        "form-message " + type;
+
+}
+
+
+
+// ==========================================
+// PASSWORD SHOW / HIDE
+// ==========================================
+
+document
+    .getElementById("togglePassword")
+    .addEventListener("click", function() {
+
+        const password =
+            document.getElementById("password");
+
+        const icon =
+            this.querySelector("i");
+
+
+        if (password.type === "password") {
+
+            password.type = "text";
+
+            icon.classList.remove(
+                "fa-eye"
+            );
+
+            icon.classList.add(
+                "fa-eye-slash"
+            );
+
+        }
+        else {
+
+            password.type = "password";
+
+            icon.classList.remove(
+                "fa-eye-slash"
+            );
+
+            icon.classList.add(
+                "fa-eye"
+            );
+
+        }
+
+    });
+
+
+
+// ==========================================
+// SIDEBAR PLACEHOLDER
+// ==========================================
+
+function comingSoon(section) {
+
+    alert(
+        section +
+        " section will be available soon."
+    );
+
+}
+
+</script>
+
+</body>
+
+</html>

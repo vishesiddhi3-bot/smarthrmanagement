@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>SmartHR | System Reports</title>
+
+    <link rel="stylesheet" href="reports.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-brand">
+
+        <div class="brand-icon">
+            <i class="fa-solid fa-users"></i>
+        </div>
+
+        <div>
+            <strong>Smart<span>HR</span></strong>
+            <small>Admin Panel</small>
+        </div>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+        <a href="admin.html">
+            <i class="fa-solid fa-chart-pie"></i>
+            Dashboard
+        </a>
+
+
+        <a href="users.html">
+            <i class="fa-solid fa-users"></i>
+            User Management
+        </a>
+
+
+        <a href="employees.html">
+            <i class="fa-solid fa-id-card"></i>
+            Employees
+        </a>
+
+
+        <a href="departments.html">
+            <i class="fa-solid fa-building"></i>
+            Departments
+        </a>
+
+
+        <a href="reports.html" class="active">
+            <i class="fa-solid fa-chart-column"></i>
+            System Reports
+        </a>
+
+
+        <a href="roles-permissions.html">
+            <i class="fa-solid fa-user-shield"></i>
+            Roles & Permissions
+        </a>
+
+
+        <div class="sidebar-divider"></div>
+
+
+        <a href="#" onclick="comingSoon('Audit Logs'); return false;">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            Audit Logs
+        </a>
+
+
+        <a href="database.html">
+            <i class="fa-solid fa-database"></i>
+            Database
+        </a>
+
+
+        <a href="setting.html">
+            <i class="fa-solid fa-gear"></i>
+            Settings
+        </a>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+        <a href="../index.html">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+        </a>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="main-content">
+
+
+    <!-- TOP HEADER -->
+
+    <header class="topbar">
+
+        <div class="header-left">
+
+            <button
+                class="mobile-menu-btn"
+                id="mobileMenuBtn"
+                type="button">
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+
+            <div>
+
+                <h1>
+                    System Reports
+                </h1>
+
+                <p>
+                    View live reports from your SmartHR database.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="header-right">
+
+            <button
+                class="refresh-btn"
+                id="refreshBtn"
+                type="button">
+
+                <i class="fa-solid fa-rotate"></i>
+                Refresh
+
+            </button>
+
+
+            <div class="admin-profile">
+
+                <div class="profile-icon">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+
+                <div>
+
+                    <strong>
+                        Admin
+                    </strong>
+
+                    <span>
+                        Administrator
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =================================================
+         CONTENT
+    ================================================= -->
+
+    <section class="content">
+
+
+        <!-- REPORT CARDS -->
+
+        <div class="report-cards">
+
+
+            <button
+                class="report-card active"
+                data-report="employees"
+                type="button">
+
+                <div class="report-icon blue">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        Employee Report
+                    </span>
+
+                    <strong id="employeeCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </button>
+
+
+
+            <button
+                class="report-card"
+                data-report="attendance"
+                type="button">
+
+                <div class="report-icon green">
+                    <i class="fa-solid fa-calendar-check"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        Attendance Report
+                    </span>
+
+                    <strong id="attendanceCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </button>
+
+
+
+            <button
+                class="report-card"
+                data-report="leaves"
+                type="button">
+
+                <div class="report-icon orange">
+                    <i class="fa-solid fa-plane-departure"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        Leave Report
+                    </span>
+
+                    <strong id="leaveCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </button>
+
+
+
+            <button
+                class="report-card"
+                data-report="payroll"
+                type="button">
+
+                <div class="report-icon purple">
+                    <i class="fa-solid fa-wallet"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        Payroll Report
+                    </span>
+
+                    <strong id="payrollCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </button>
+
+        </div>
+
+
+
+        <!-- REPORT PANEL -->
+
+        <section class="report-panel">
+
+
+            <!-- PANEL HEADER -->
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2 id="reportTitle">
+                        Employee Report
+                    </h2>
+
+                    <p id="reportSubtitle">
+                        Live employee information
+                    </p>
+
+                </div>
+
+
+                <div class="panel-actions">
+
+                    <button
+                        class="secondary-btn"
+                        id="printBtn"
+                        type="button">
+
+                        <i class="fa-solid fa-print"></i>
+                        Print
+
+                    </button>
+
+
+                    <button
+                        class="primary-btn"
+                        id="exportBtn"
+                        type="button">
+
+                        <i class="fa-solid fa-download"></i>
+                        Export CSV
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SEARCH -->
+
+            <div class="tools">
+
+                <div class="search-box">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search report...">
+
+                </div>
+
+
+                <select id="statusFilter">
+
+                    <option value="all">
+                        All Status
+                    </option>
+
+                    <option value="active">
+                        Active
+                    </option>
+
+                    <option value="inactive">
+                        Inactive
+                    </option>
+
+                    <option value="present">
+                        Present
+                    </option>
+
+                    <option value="absent">
+                        Absent
+                    </option>
+
+                    <option value="half_day">
+                        Half Day
+                    </option>
+
+                    <option value="leave">
+                        Leave
+                    </option>
+
+                    <option value="pending">
+                        Pending
+                    </option>
+
+                    <option value="approved">
+                        Approved
+                    </option>
+
+                    <option value="rejected">
+                        Rejected
+                    </option>
+
+                    <option value="paid">
+                        Paid
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- TABLE -->
+
+            <div class="table-wrapper">
+
+                <table id="reportTable">
+
+                    <thead id="reportHead">
+                    </thead>
+
+                    <tbody id="reportBody">
+
+                        <tr>
+
+                            <td colspan="10"
+                                class="loading">
+
+                                <i class="fa-solid fa-spinner fa-spin"></i>
+
+                                Loading report...
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+
+            <!-- FOOTER -->
+
+            <div class="table-footer">
+
+                <span id="resultText">
+                    Loading...
+                </span>
+
+                <span id="lastUpdated">
+                    —
+                </span>
+
+            </div>
+
+        </section>
+
+    </section>
+
+</main>
+
+
+
+<!-- =====================================================
+     SCRIPT
+===================================================== -->
+
+<script src="reports.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartHR | Recognition</title>
+
+    <link rel="stylesheet" href="recognition.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="page">
+
+    <header class="topbar">
+
+        <div>
+            <h1>Employee Recognition</h1>
+            <p>Appreciate and celebrate employee achievements</p>
+        </div>
+
+        <button class="back-btn" onclick="goBack()">
+            <i class="fa-solid fa-arrow-left"></i>
+            Back to Dashboard
+        </button>
+
+    </header>
+
+
+    <!-- STATS -->
+
+    <section class="stats-grid">
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                <i class="fa-solid fa-trophy"></i>
+            </div>
+
+            <div>
+                <span>Total Recognitions</span>
+                <strong id="totalRecognitions">0</strong>
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                <i class="fa-solid fa-users"></i>
+            </div>
+
+            <div>
+                <span>Employees Recognized</span>
+                <strong id="employeesRecognized">0</strong>
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                <i class="fa-solid fa-calendar-days"></i>
+            </div>
+
+            <div>
+                <span>Latest Recognition</span>
+                <strong id="latestRecognition">-</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ADD RECOGNITION -->
+
+    <section class="card">
+
+        <div class="card-header">
+
+            <div>
+                <h2>Give Recognition</h2>
+                <p>Recognize an employee for their contribution</p>
+            </div>
+
+        </div>
+
+
+        <form id="recognitionForm">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label>Employee</label>
+
+                    <select id="to_employee_id" required>
+
+                        <option value="">
+                            Select Employee
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Recognition Title</label>
+
+                    <input
+                        type="text"
+                        id="title"
+                        placeholder="Example: Employee of the Month"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label>Message</label>
+
+                    <textarea
+                        id="message"
+                        rows="5"
+                        placeholder="Write your appreciation message..."
+                        required
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <button
+                    type="reset"
+                    class="cancel-btn">
+                    Clear
+                </button>
+
+                <button
+                    type="submit"
+                    class="save-btn">
+
+                    <i class="fa-solid fa-trophy"></i>
+
+                    Give Recognition
+
+                </button>
+
+            </div>
+
+        </form>
+
+
+        <div id="formMessage"></div>
+
+    </section>
+
+
+    <!-- RECOGNITION RECORDS -->
+
+    <section class="card">
+
+        <div class="card-header">
+
+            <div>
+                <h2>Recognition Records</h2>
+                <p>Recently recognized employees</p>
+            </div>
+
+            <button
+                class="refresh-btn"
+                onclick="loadRecognitions()">
+
+                <i class="fa-solid fa-rotate"></i>
+
+                Refresh
+
+            </button>
+
+        </div>
+
+
+        <div id="recognitionList"
+             class="recognition-list">
+
+            <div class="loading">
+                Loading recognitions...
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<script src="recognition.js"></script>
+
+</body>
+</html>

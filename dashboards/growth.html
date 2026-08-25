@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartHR | Growth Tracker</title>
+
+    <link rel="stylesheet" href="growth.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- HEADER -->
+
+    <header class="topbar">
+
+        <div>
+            <h1>Growth Tracker</h1>
+            <p>Track employee growth and development</p>
+        </div>
+
+        <button class="back-btn" onclick="goBack()">
+            <i class="fa-solid fa-arrow-left"></i>
+            Back to Dashboard
+        </button>
+
+    </header>
+
+
+    <!-- STATISTICS -->
+
+    <section class="stats-grid">
+
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fa-solid fa-users"></i>
+            </div>
+
+            <div>
+                <span>Total Reviews</span>
+                <strong id="totalReviews">0</strong>
+            </div>
+        </div>
+
+
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fa-solid fa-chart-line"></i>
+            </div>
+
+            <div>
+                <span>Average Score</span>
+                <strong id="averageScore">0</strong>
+            </div>
+        </div>
+
+
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fa-solid fa-star"></i>
+            </div>
+
+            <div>
+                <span>Top Performers</span>
+                <strong id="topPerformers">0</strong>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- ADD PERFORMANCE -->
+
+    <section class="card">
+
+        <div class="card-header">
+
+            <div>
+                <h2>Add Growth Record</h2>
+                <p>Create an employee performance/growth review</p>
+            </div>
+
+        </div>
+
+
+        <form id="growthForm">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label>Employee</label>
+
+                    <select id="employee_id" required>
+
+                        <option value="">
+                            Select Employee
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Review Period</label>
+
+                    <input
+                        type="text"
+                        id="review_period"
+                        placeholder="Example: Q3 2026"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Goals Score</label>
+
+                    <input
+                        type="number"
+                        id="goals_score"
+                        min="0"
+                        max="100"
+                        value="0"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Productivity Score</label>
+
+                    <input
+                        type="number"
+                        id="productivity_score"
+                        min="0"
+                        max="100"
+                        value="0"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Quality Score</label>
+
+                    <input
+                        type="number"
+                        id="quality_score"
+                        min="0"
+                        max="100"
+                        value="0"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>Teamwork Score</label>
+
+                    <input
+                        type="number"
+                        id="teamwork_score"
+                        min="0"
+                        max="100"
+                        value="0"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group full">
+
+                    <label>Manager Comment</label>
+
+                    <textarea
+                        id="manager_comment"
+                        rows="4"
+                        placeholder="Enter manager comments..."
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-actions">
+
+                <button type="reset" class="cancel-btn">
+                    Clear
+                </button>
+
+                <button type="submit" class="save-btn">
+                    <i class="fa-solid fa-plus"></i>
+                    Add Growth Record
+                </button>
+
+            </div>
+
+        </form>
+
+        <div id="formMessage"></div>
+
+    </section>
+
+
+    <!-- RECORDS -->
+
+    <section class="card">
+
+        <div class="card-header">
+
+            <div>
+                <h2>Employee Growth Records</h2>
+                <p>Performance and development history</p>
+            </div>
+
+            <button class="refresh-btn" onclick="loadGrowthRecords()">
+                <i class="fa-solid fa-rotate"></i>
+                Refresh
+            </button>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Employee</th>
+                        <th>Review Period</th>
+                        <th>Goals</th>
+                        <th>Productivity</th>
+                        <th>Quality</th>
+                        <th>Teamwork</th>
+                        <th>Overall</th>
+                        <th>Comment</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="growthTableBody">
+
+                    <tr>
+
+                        <td colspan="8" class="loading">
+                            Loading records...
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<script src="growth.js"></script>
+
+</body>
+</html>

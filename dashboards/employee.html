@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartHR | Employee Dashboard</title>
+
+    <link rel="stylesheet" href="employee.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="employee-dashboard">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-brand">
+
+            <div class="brand-icon">
+                <i class="fa-solid fa-users"></i>
+            </div>
+
+            <div>
+                <strong>SmartHR</strong>
+                <small>Employee Portal</small>
+            </div>
+
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="#dashboard" class="active">
+                <i class="fa-solid fa-chart-pie"></i>
+                Dashboard
+            </a>
+
+            <a href="#profile">
+                <i class="fa-solid fa-user"></i>
+                My Profile
+            </a>
+
+            <a href="#attendance">
+                <i class="fa-solid fa-calendar-check"></i>
+                Attendance
+            </a>
+
+            <a href="#leave">
+                <i class="fa-solid fa-plane-departure"></i>
+                Leave
+            </a>
+
+            <a href="#work">
+                <i class="fa-solid fa-briefcase"></i>
+                My Work
+            </a>
+<a href="#salary">
+    <i class="fa-solid fa-money-bill-wave"></i>
+    Salary
+</a>
+
+<a href="#suggestions">
+    <i class="fa-solid fa-lightbulb"></i>
+    Suggestions
+</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="#settings">
+                <i class="fa-solid fa-gear"></i>
+                Settings
+            </a>
+
+            <a href="#" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main-content" id="dashboard">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>Employee Dashboard</h1>
+
+                <p>
+                    Welcome back,
+                    <span id="welcomeName">Employee</span>.
+                </p>
+
+            </div>
+
+
+            <div class="employee-profile">
+
+                <div class="profile-icon">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+
+                <div>
+
+                    <strong id="topUsername">
+                        Employee
+                    </strong>
+
+                    <span id="topRole">
+                        Employee
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= WELCOME ================= -->
+
+        <section class="welcome-card">
+
+            <div>
+
+                <span class="welcome-label">
+                    Welcome to SmartHR
+                </span>
+
+                <h2 id="employeeFullName">
+                    Loading employee...
+                </h2>
+
+                <p>
+                    Manage your profile, attendance, leave
+                    and assigned work from your employee portal.
+                </p>
+
+            </div>
+
+            <div class="employee-code-box">
+
+                <span>Employee ID</span>
+
+                <strong id="employeeCode">-</strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= BASIC STATS ================= -->
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    <i class="fa-solid fa-building"></i>
+                </div>
+
+                <div>
+                    <span>Department</span>
+                    <strong id="employeeDepartment">-</strong>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    <i class="fa-solid fa-user-tie"></i>
+                </div>
+
+                <div>
+                    <span>Designation</span>
+                    <strong id="employeeDesignation">-</strong>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+                    <i class="fa-solid fa-calendar-days"></i>
+                </div>
+
+                <div>
+                    <span>Joining Date</span>
+                    <strong id="joiningDate">-</strong>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+
+                <div>
+                    <span>Account Status</span>
+                    <strong id="employeeStatus">-</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= PROFILE + ATTENDANCE ================= -->
+
+        <section class="content-grid">
+
+            <!-- PROFILE -->
+
+            <div class="dashboard-card" id="profile">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>My Personal Information</h2>
+
+                        <p>
+                            Your registered employee details.
+                        </p>
+                    </div>
+
+                    <i class="fa-solid fa-user-circle"></i>
+
+                </div>
+
+
+                <div class="details-grid">
+
+                    <div class="detail-item">
+                        <span>First Name</span>
+                        <strong id="firstName">-</strong>
+                    </div>
+
+                    <div class="detail-item">
+                        <span>Last Name</span>
+                        <strong id="lastName">-</strong>
+                    </div>
+
+                    <div class="detail-item">
+                        <span>Email</span>
+                        <strong id="employeeEmail">-</strong>
+                    </div>
+
+                    <div class="detail-item">
+                        <span>Phone</span>
+                        <strong id="employeePhone">-</strong>
+                    </div>
+
+                    <div class="detail-item">
+                        <span>Department</span>
+                        <strong id="profileDepartment">-</strong>
+                    </div>
+
+                    <div class="detail-item">
+                        <span>Designation</span>
+                        <strong id="profileDesignation">-</strong>
+                    </div>
+
+                    <div class="detail-item">
+                        <span>Employee ID</span>
+                        <strong id="profileEmployeeCode">-</strong>
+                    </div>
+
+                    <div class="detail-item">
+                        <span>Joining Date</span>
+                        <strong id="profileJoiningDate">-</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ATTENDANCE -->
+
+            <div class="dashboard-card" id="attendance">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Today's Attendance</h2>
+
+                        <p>
+                            Mark your daily attendance.
+                        </p>
+                    </div>
+
+                    <i class="fa-solid fa-calendar-check"></i>
+
+                </div>
+
+
+                <div class="attendance-box">
+
+                    <div class="attendance-status">
+
+                        <span>Current Status</span>
+
+                        <strong id="attendanceStatus">
+                            Checking...
+                        </strong>
+
+                    </div>
+
+
+                    <div class="attendance-times">
+
+                        <div>
+                            <span>Check In</span>
+                            <strong id="checkInTime">-</strong>
+                        </div>
+
+                        <div>
+                            <span>Check Out</span>
+                            <strong id="checkOutTime">-</strong>
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        id="presentBtn"
+                        class="primary-btn">
+
+                        <i class="fa-solid fa-check"></i>
+                        Mark Present
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= LEAVE + WORK ================= -->
+
+        <section class="content-grid">
+
+            <!-- LEAVE -->
+
+            <div class="dashboard-card" id="leave">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>Leave Management</h2>
+
+                        <p>
+                            Manage your leave requests.
+                        </p>
+                    </div>
+
+                    <i class="fa-solid fa-plane-departure"></i>
+
+                </div>
+
+
+                <div class="module-box">
+
+                    <div class="module-icon">
+                        <i class="fa-solid fa-calendar-minus"></i>
+                    </div>
+
+                    <h3>Leave Requests</h3>
+
+                    <p>
+                        Apply for leave and track your
+                        request status.
+                    </p>
+
+                    <button
+                        type="button"
+                        id="leaveBtn"
+                        class="secondary-btn">
+
+                        Apply Leave
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= MY WORK ================= -->
+
+            <div class="dashboard-card work-dashboard-card" id="work">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h2>My Work</h2>
+
+                        <p>
+                            View and manage your assigned work.
+                        </p>
+
+                    </div>
+
+                    <i class="fa-solid fa-briefcase"></i>
+
+                </div>
+
+
+                <!-- WORK SUMMARY -->
+
+                <div class="work-summary">
+
+                    <div class="work-stat total">
+
+                        <span>Total</span>
+
+                        <strong id="workTotal">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="work-stat pending">
+
+                        <span>Pending</span>
+
+                        <strong id="workPending">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="work-stat progress">
+
+                        <span>In Progress</span>
+
+                        <strong id="workProgress">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="work-stat completed">
+
+                        <span>Completed</span>
+
+                        <strong id="workCompleted">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- WORK MESSAGE -->
+
+                <div
+                    id="workLoading"
+                    class="work-loading">
+
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+
+                    Loading your tasks...
+
+                </div>
+
+
+                <!-- TASK LIST -->
+
+                <div
+                    id="workTaskList"
+                    class="work-task-list">
+                </div>
+
+
+                <!-- VIEW WORK BUTTON -->
+
+                <div class="work-action">
+
+                    <button
+                        type="button"
+                        id="workBtn"
+                        class="secondary-btn">
+
+                        <i class="fa-solid fa-list-check"></i>
+
+                        View My Work
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+<!-- ================= SALARY + SUGGESTIONS ================= -->
+
+<section class="content-grid">
+
+    <!-- ================= SALARY ================= -->
+
+    <div class="dashboard-card" id="salary">
+
+        <div class="card-header">
+
+            <div>
+                <h2>My Salary</h2>
+
+                <p>
+                    View your latest payroll details.
+                </p>
+            </div>
+
+            <i class="fa-solid fa-money-bill-wave"></i>
+
+        </div>
+
+
+        <!-- LATEST SALARY -->
+
+        <div class="salary-summary">
+
+            <div class="salary-main">
+
+                <span>Latest Net Salary</span>
+
+                <strong id="latestNetSalary">
+                    ₹0
+                </strong>
+
+            </div>
+
+            <div class="salary-status">
+
+                <span>Payment Status</span>
+
+                <strong id="latestPaymentStatus">
+                    Loading...
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- SALARY DETAILS -->
+
+        <div class="details-grid salary-details">
+
+            <div class="detail-item">
+
+                <span>Pay Month</span>
+
+                <strong id="salaryPayMonth">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>Basic Salary</span>
+
+                <strong id="salaryBasic">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>Allowances</span>
+
+                <strong id="salaryAllowances">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>Deductions</span>
+
+                <strong id="salaryDeductions">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>Net Salary</span>
+
+                <strong id="salaryNet">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <div class="detail-item">
+
+                <span>Payment Status</span>
+
+                <strong id="salaryStatus">
+                    -
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- PAYROLL HISTORY -->
+
+        <div class="salary-history">
+
+            <h3>Payroll History</h3>
+
+            <div
+                id="salaryHistory"
+                class="salary-history-list">
+
+                <div class="work-loading">
+
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+
+                    Loading salary history...
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= SUGGESTIONS ================= -->
+
+    <div class="dashboard-card" id="suggestions">
+
+        <div class="card-header">
+
+            <div>
+
+                <h2>Suggestions</h2>
+
+                <p>
+                    Share your ideas and feedback with HR.
+                </p>
+
+            </div>
+
+            <i class="fa-solid fa-lightbulb"></i>
+
+        </div>
+
+
+        <!-- SUBMIT SUGGESTION -->
+
+        <div class="suggestion-form">
+
+            <label for="suggestionText">
+                Your Suggestion
+            </label>
+
+            <textarea
+                id="suggestionText"
+                rows="5"
+                placeholder="Write your suggestion here..."
+            ></textarea>
+
+
+            <button
+                type="button"
+                id="submitSuggestionBtn"
+                class="primary-btn">
+
+                <i class="fa-solid fa-paper-plane"></i>
+
+                Submit Suggestion
+
+            </button>
+
+        </div>
+
+
+        <!-- SUGGESTION MESSAGE -->
+
+        <div
+            id="suggestionMessage"
+            class="dashboard-message">
+        </div>
+
+
+        <!-- MY SUGGESTIONS -->
+
+        <div class="suggestion-history">
+
+            <h3>My Suggestions</h3>
+
+            <div
+                id="suggestionList">
+
+                <div class="work-loading">
+
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+
+                    Loading suggestions...
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+        <!-- ================= MESSAGE ================= -->
+
+        <div
+            id="dashboardMessage"
+            class="dashboard-message">
+        </div>
+
+
+    </main>
+
+</div>
+
+
+<script src="employee.js"></script>
+
+</body>
+
+</html>
+
