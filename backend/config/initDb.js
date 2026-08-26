@@ -134,7 +134,8 @@ const schemaQueries = [
         employee_id INT NOT NULL,
         title VARCHAR(255) NOT NULL,
         description TEXT NOT NULL,
-        status ENUM('submitted', 'under_review', 'implemented', 'approved', 'rejected') DEFAULT 'submitted',
+        admin_comment TEXT NULL,
+        status ENUM('submitted', 'under_review', 'reviewed', 'implemented', 'approved', 'rejected') DEFAULT 'submitted',
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         INDEX (employee_id)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;`,
@@ -154,11 +155,13 @@ const schemaQueries = [
     `CREATE TABLE IF NOT EXISTS audit_logs (
         id INT AUTO_INCREMENT PRIMARY KEY,
         user_id INT NULL,
+        user_role VARCHAR(50) NULL,
         action VARCHAR(100) NOT NULL,
+        module VARCHAR(100) NULL,
         description TEXT,
-        entity_type VARCHAR(100),
+        entity_type VARCHAR(100) NULL,
         entity_id INT NULL,
-        ip_address VARCHAR(100),
+        ip_address VARCHAR(100) NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         INDEX (user_id)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;`,
@@ -173,6 +176,7 @@ const schemaQueries = [
         status ENUM('pending', 'in_progress', 'completed') DEFAULT 'pending',
         due_date DATE NULL,
         assigned_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        completed_at DATETIME NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         INDEX (employee_id)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;`
@@ -187,13 +191,31 @@ async function runQuery(sql, params = []) {
     });
 }
 
+async function addColumnIfNotExists(table, column, definition) {
+    try {
+        await runQuery(`ALTER TABLE ${table} ADD COLUMN ${column} ${definition}`);
+        console.log(`✅ Added column ${column} to ${table}`);
+    } catch (err) {
+        if (err.errno !== 1060 && !err.message.includes("Duplicate column name")) {
+            console.warn(`Column check for ${table}.${column}:`, err.message);
+        }
+    }
+}
+
 async function initDatabase() {
     try {
         console.log("🔄 Checking / Initializing database tables...");
         for (const query of schemaQueries) {
             await runQuery(query);
         }
-        console.log("✅ All tables verified / created successfully.");
+
+        // Run column migrations for existing tables
+        await addColumnIfNotExists("suggestions", "admin_comment", "TEXT NULL");
+        await addColumnIfNotExists("audit_logs", "user_role", "VARCHAR(50) NULL");
+        await addColumnIfNotExists("audit_logs", "module", "VARCHAR(100) NULL");
+        await addColumnIfNotExists("employee_tasks", "completed_at", "DATETIME NULL");
+
+        console.log("✅ All tables and columns verified / upgraded successfully.");
 
         // Seed Leave Types
         const leaveTypes = [
@@ -257,6 +279,8 @@ async function initDatabase() {
             }
         ];
 
+        let employeeRecordId = null;
+
         for (const u of usersToSeed) {
             const existing = await runQuery("SELECT id FROM users WHERE email = ? LIMIT 1", [u.email]);
             let userId;
@@ -276,7 +300,7 @@ async function initDatabase() {
             if (empExisting.length === 0) {
                 const names = u.username.split(" ");
                 const code = "EMP" + String(userId).padStart(3, "0");
-                await runQuery(
+                const insEmp = await runQuery(
                     `INSERT INTO employees 
                     (employee_code, first_name, last_name, phone, department, designation, joining_date, salary, status, user_id) 
                     VALUES (?, ?, ?, ?, ?, ?, CURDATE(), ?, 'active', ?)`,
@@ -291,12 +315,56 @@ async function initDatabase() {
                         userId
                     ]
                 );
+                if (u.role === "employee" || u.role === "hr") {
+                    employeeRecordId = insEmp.insertId;
+                }
                 console.log(`✅ Seeded employee record for: ${u.email}`);
+            } else {
+                if (u.role === "employee" || u.role === "hr") {
+                    employeeRecordId = empExisting[0].id;
+                }
             }
         }
 
-        console.log("🎉 Database initialization complete!");
-        return { success: true, message: "Database initialized and seeded successfully" };
+        // Seed Sample Suggestions if table is empty
+        const existingSuggestions = await runQuery("SELECT id FROM suggestions LIMIT 1");
+        if (existingSuggestions.length === 0 && employeeRecordId) {
+            const sampleSuggestions = [
+                [employeeRecordId, "Flexible Work Hours", "Allow flexible starting hours between 8 AM and 10 AM to improve work-life balance.", "Great idea, we are reviewing this policy.", "under_review"],
+                [employeeRecordId, "Learning & Certification Budget", "Provide annual learning allowance for online certifications and tech courses.", "Approved by HR management.", "approved"],
+                [employeeRecordId, "Wellness & Ergonomic Chairs", "Upgrade office chairs for ergonomic posture support during long working hours.", null, "submitted"]
+            ];
+            for (const [empId, title, desc, comment, status] of sampleSuggestions) {
+                await runQuery(
+                    "INSERT INTO suggestions (employee_id, title, description, admin_comment, status) VALUES (?, ?, ?, ?, ?)",
+                    [empId, title, desc, comment, status]
+                );
+            }
+            console.log("✅ Seeded sample suggestions.");
+        }
+
+        // Seed Sample Announcement if empty
+        const existingAnnouncements = await runQuery("SELECT id FROM announcements LIMIT 1");
+        if (existingAnnouncements.length === 0) {
+            await runQuery(
+                "INSERT INTO announcements (title, message, created_by, status) VALUES (?, ?, ?, 'active')",
+                ["Welcome to SmartHR System", "SmartHR management portal is fully online. Explore your dashboard!", 1]
+            );
+            console.log("✅ Seeded welcome announcement.");
+        }
+
+        // Seed Sample Tasks if empty
+        const existingTasks = await runQuery("SELECT id FROM employee_tasks LIMIT 1");
+        if (existingTasks.length === 0 && employeeRecordId) {
+            await runQuery(
+                "INSERT INTO employee_tasks (employee_id, title, description, priority, status, due_date) VALUES (?, ?, ?, 'high', 'in_progress', DATE_ADD(CURDATE(), INTERVAL 5 DAY))",
+                [employeeRecordId, "Complete System Onboarding", "Review your profile and update contact details in the portal."]
+            );
+            console.log("✅ Seeded sample task.");
+        }
+
+        console.log("🎉 Database initialization and verification complete!");
+        return { success: true, message: "Database initialized, migrated, and seeded successfully" };
     } catch (err) {
         console.error("❌ Database initialization error:", err);
         return { success: false, error: err.message };
