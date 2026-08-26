@@ -2,7 +2,7 @@
 // SmartHR - EMPLOYEE LEAVE MANAGEMENT
 // =====================================================
 
-const LEAVE_API = "http://localhost:5000/api/leave";
+const LEAVE_API = "https://smarthrmanagement-backend.onrender.com/api/leave";
 
 
 // =====================================================

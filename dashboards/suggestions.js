@@ -2,7 +2,7 @@
 // SmartHR - SUGGESTIONS
 // ==========================================
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://smarthrmanagement-backend.onrender.com/api";
 
 
 // ==========================================

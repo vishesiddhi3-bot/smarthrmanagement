@@ -2,7 +2,7 @@
 // SmartHR SYSTEM REPORTS
 // =====================================================
 
-const API_BASE = "http://localhost:5000/api/reports";
+const API_BASE = "https://smarthrmanagement-backend.onrender.com/api/reports";
 
 
 // =====================================================

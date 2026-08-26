@@ -119,7 +119,7 @@ loginForm.addEventListener("submit", async function (event) {
         // ======================================
 
         const response = await fetch(
-            "http://localhost:5000/api/auth/login",
+            "https://smarthrmanagement-backend.onrender.com/api/auth/login",
             {
                 method: "POST",
 
@@ -565,7 +565,7 @@ if (registerForm) {
 
                 const response =
                     await fetch(
-                        "http://localhost:5000/api/auth/register",
+                        "https://smarthrmanagement-backend.onrender.com/api/auth/register",
                         {
 
                             method: "POST",

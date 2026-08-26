@@ -3,7 +3,8 @@
 // =====================================================
 
 const WORK_API =
-    "http://localhost:5000/api/work";
+    "https://smarthrmanagement-backend.onrender.com
+/api/work";
 
 
 // =====================================================

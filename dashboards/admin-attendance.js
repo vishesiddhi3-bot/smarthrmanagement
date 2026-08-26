@@ -3,7 +3,7 @@
 // =====================================================
 
 const ATTENDANCE_API =
-    "http://localhost:5000/api/attendance";
+    "https://smarthrmanagement-backend.onrender.com/api/attendance";
 
 
 // =====================================================

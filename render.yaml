@@ -1,0 +1,31 @@
+﻿services:
+  # Static site for Frontend
+  - type: web
+    name: smarthrmanagement-frontend
+    runtime: static
+    buildCommand: ""
+    publishPath: "."
+    pullRequestPreviewsEnabled: true
+
+  # Web Service for Node.js Express Backend
+  - type: web
+    name: smarthrmanagement-backend
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: DB_HOST
+        sync: false
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_NAME
+        sync: false
+      - key: DB_PORT
+        value: 3306

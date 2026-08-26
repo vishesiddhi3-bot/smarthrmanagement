@@ -8,13 +8,13 @@
 // =====================================================
 
 const DASHBOARD_API =
-    "http://localhost:5000/api/employee-dashboard";
+    "https://smarthrmanagement-backend.onrender.com/api/employee-dashboard";
 
 const ATTENDANCE_API =
-    "http://localhost:5000/api/attendance";
+    "https://smarthrmanagement-backend.onrender.com/api/attendance";
 
 const WORK_API =
-    "http://localhost:5000/api/work";
+    "https://smarthrmanagement-backend.onrender.com/api/work";
 
 
 // =====================================================
@@ -1849,10 +1849,10 @@ document.addEventListener(
 // ==========================================
 
 const PAYROLL_API_URL =
-    "http://localhost:5000/api/employee-dashboard";
+    "https://smarthrmanagement-backend.onrender.com/api/employee-dashboard";
 
 const SUGGESTIONS_API_URL =
-    "http://localhost:5000/api/suggestions";
+    "https://smarthrmanagement-backend.onrender.com/api/suggestions";
 
 
 // ==========================================

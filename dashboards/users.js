@@ -2,7 +2,7 @@
 // SmartHR - USER MANAGEMENT
 // ==========================================
 
-const API_URL = "http://localhost:5000/api/users";
+const API_URL = "https://smarthrmanagement-backend.onrender.com/api/users";
 
 let allUsers = [];
 let deleteUserId = null;

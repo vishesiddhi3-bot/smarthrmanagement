@@ -2,7 +2,7 @@
 // SmartHR - FINAL MANAGER DASHBOARD
 // =====================================================
 
-const API_BASE = "http://localhost:5000/api";
+const API_BASE = "https://smarthrmanagement-backend.onrender.com/api";
 
 let currentManager = null;
 let selectedDepartment = null;

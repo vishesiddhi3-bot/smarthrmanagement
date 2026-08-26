@@ -3,7 +3,7 @@
 // ==========================================
 
 const API_URL =
-    "http://localhost:5000/api/audit-logs";
+    "https://smarthrmanagement-backend.onrender.com/api/audit-logs";
 
 
 let deleteLogId = null;

@@ -3,7 +3,7 @@
 // =====================================================
 
 const LEAVE_API =
-    "http://localhost:5000/api/leave";
+    "https://smarthrmanagement-backend.onrender.com/api/leave";
 
 
 let allLeaves = [];

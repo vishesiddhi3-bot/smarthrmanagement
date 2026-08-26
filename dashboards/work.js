@@ -9,10 +9,10 @@
 // =====================================================
 
 const WORK_API =
-    "http://localhost:5000/api/work";
+    "https://smarthrmanagement-backend.onrender.com/api/work";
 
 const DASHBOARD_API =
-    "http://localhost:5000/api/employee-dashboard";
+    "https://smarthrmanagement-backend.onrender.com/api/employee-dashboard";
 
 
 // =====================================================

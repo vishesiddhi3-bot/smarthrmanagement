@@ -3,7 +3,7 @@
 // ==========================================
 
 const API_URL =
-    "http://localhost:5000/api/departments";
+    "https://smarthrmanagement-backend.onrender.com/api/departments";
 
 
 // ==========================================
