@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 
 const db = require("./config/db");
+const { initDatabase } = require("./config/initDb");
 
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/users");
@@ -193,15 +194,30 @@ app.get(
     }
 );
 
+// =====================================================
+// INIT DATABASE ROUTE
+// =====================================================
+
+app.get(
+    "/api/init-db",
+    async (req, res) => {
+        const result = await initDatabase();
+        res.json(result);
+    }
+);
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(
     PORT,
-    () => {
+    async () => {
 
         console.log(
             `SmartHR Server running at http://localhost:${PORT}`
         );
+
+        // Auto-initialize tables and seed default users
+        await initDatabase();
 
     }
 );
